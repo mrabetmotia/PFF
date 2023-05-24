@@ -1,115 +1,20 @@
 import React from 'react';
 
-function Header() {
+function Shop() {
   
 
   return (
 
-<main style={{ backgroundColor: "#f5f5f5" }}>
-	
-    <div className="slider-area position-relative">
-        <div className="slider-active">
-            <div className="single-slider slider-height d-flex align-items-center">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-xl-9 col-lg-9 col-md-10">
-                            <div className="hero__caption">
-                                <span data-animation="fadeInLeft" data-delay="0.1s">Hi This is  Zacson</span>
-                                <h1 data-animation="fadeInLeft" data-delay="0.4s">Gym Trainer</h1>
-                                <a href="courses.html" className="border-btn hero-btn" data-animation="fadeInLeft" data-delay="0.8s">My Courses</a>
-                            </div>
+<>
+<main>
+    <div className="slider-area2">
+        <div className="slider-height2 d-flex align-items-center">
+            <div className="container">
+                <div className="row">
+                    <div className="col-xl-12">
+                        <div className="hero-cap hero-cap2 pt-70">
+                            <h2>Grab what you need</h2>
                         </div>
-                    </div>
-                </div>          
-            </div>
-        </div>
-    </div>
-
-    <section className="team-area fix">
-        <div className="container">
-            <div className="row">
-                <div className="col-xl-12">
-                    <div className="section-tittle text-center mb-55 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
-                        <h2 >What I Offer</h2>
-                    </div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-lg-4 col-md-6">
-                    <div className="single-cat text-center mb-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s" >
-                        <div className="cat-icon">
-                            <img src="https://themewagon.github.io/zacson/assets/img/gallery/team2.png" alt="" />
-                        </div>
-                        <div className="cat-cap">
-                            <h5><a href="/coach">Coaching</a></h5>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-lg-4 col-md-6">
-                    <div className="single-cat text-center mb-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
-                        <div className="cat-icon">
-                            <img src="https://themewagon.github.io/zacson/assets/img/gallery/team1.png" alt="" />
-                        </div>
-                        <div className="cat-cap">
-                            <h5><a href="/course">Excerice</a></h5>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-lg-4 col-md-6">
-                    <div className="single-cat text-center mb-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
-                        <div className="cat-icon">
-                            <img src="https://themewagon.github.io/zacson/assets/img/gallery/team3.png" alt="" />
-                        </div>
-                        <div className="cat-cap">
-                            <h5><a href="/shop">Proteine</a></h5>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-lg-4 col-md-6">
-                    <div className="single-cat text-center mb-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
-                        <div className="cat-icon">
-                            <img src="https://themewagon.github.io/gymlife/img/sidebar-banner.jpg" alt="" />
-                        </div>
-                        <div className="cat-cap">
-                            <h5><a href="/shop">Accessoire </a></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div className="gallery-area section-padding30 ">
-        <div className="container-fluid section-tittle text-center mb-55">
-            <h2 style={{ margin: "0 0 14% 0" }}> Motivié</h2>
-            <div className="row">
-                <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                    <div className="box snake mb-30">
-                        <div className="gallery-img big-img" style={{backgroundImage: "url(https://images.unsplash.com/photo-1550345332-09e3ac987658?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Z3ltJTIwZ2lybHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60)"}}></div>
-                    </div>
-                </div>
-                <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                    <div className="box snake mb-30">
-                        <div className="gallery-img big-img" style={{backgroundImage: "url(https://images.unsplash.com/photo-1577221084712-45b0445d2b00?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Z3ltfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60)"}}></div>
-                    </div>
-                </div>
-                <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                    <div className="box snake mb-30">
-					<div className="gallery-img big-img" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1584380931214-dbb5b72e7fd0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGd5bSUyMGdpcmx8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60)" }}></div>
-                    </div>
-                </div>
-                <div className="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-                    <div className="box snake mb-30">
-					<div className="gallery-img big-img" style={{backgroundImage: "url(https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Z3ltJTIwZ2lybHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60)"}}></div>
-                    </div>
-                </div>
-                <div className="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-                    <div className="box snake mb-30">
-                        <div className="gallery-img big-img" style={{backgroundImage: "url(https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fGV4ZXJjaXNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60)"}}></div>
-                    </div>
-                </div>
-                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                    <div className="box snake mb-30">
-                        <div className="gallery-img big-img" style={{backgroundImage: "url(https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGd5bXxlbnwwfDB8MHx8&auto=format&fit=crop&w=500&q=60)"}}></div>
                     </div>
                 </div>
             </div>
@@ -161,10 +66,10 @@ function Header() {
             </div>
         </div>
     </section>
- 
-    
+
 </main>
+</>
   );
 }
 
-export default Header;
+export default Shop;

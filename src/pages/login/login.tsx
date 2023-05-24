@@ -1,54 +1,79 @@
-import React, { useState } from 'react';
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-const inter = Inter({ subsets: ['latin'] })
-import { useRouter } from 'next/router'
+import React, { useState, useEffect } from 'react';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import axios from 'axios';
+import { useAuth } from '@/context/AuthContext';
+import { z } from 'zod';
 
+const loginSchema = z.object({
+  email: z.string().email('Invalid email address').nonempty('Email is required'),
+  password: z.string().min(6, 'Password must be at least 6 characters').nonempty('Password is required'),
+});
 
 export default function Login() {
-  const router = useRouter()
-  const [title, setTitle]  = useState('Welcome back, please login!')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  
+  const { login, isLoggedIn } = useAuth();
+  const router = useRouter();
+  const [title, setTitle] = useState('Welcome back, please login!');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({ email: '', password: '' });
+
   const resetForm = (event: any) => {
-    event.preventDefault()
-    setEmail('')
-    setPassword('')
-  }
-  
-  const handleSaveClient = async (event: any) => {
     event.preventDefault();
-    const payload = {
-      email: email, 
-      password: password,
-    };
+    setEmail('');
+    setPassword('');
+    setErrors({ email: '', password: '' });
+  };
+
+  const handleLogin = async (event: any) => {
+    event.preventDefault();
     try {
-        await axios.post('http://localhost:3000/inscription', payload)
-        toast("Product created successfully");
-        router.push('/admin/products/');
-      } catch (error) {
-        console.error(error);
+      loginSchema.parse({ email, password });
+
+      // Make a POST request to your backend login endpoint
+      const response = await fetch('http://localhost:9000/inscription', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        // Login successful
+        login(email, password);
+        toast('Welcome Back, Login successful');
+        router.push('/');
+      } else {
+        // Login failed
+        const data = await response.json();
+        setErrors({
+          email: data.message || '',
+          password: '',
+        });
       }
-      console.log("BUTTON YI5DIM");
-    };
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const emailError = error.issues.find((issue) => issue.path[0] === 'email');
+        const passwordError = error.issues.find((issue) => issue.path[0] === 'password');
+        setErrors({
+          email: emailError ? emailError.message : '',
+          password: passwordError ? passwordError.message : '',
+        });
+      }
+    }
+  };
 
-  const handleLogin = (event: any) => {
-    event.preventDefault()
-    console.log('login the user')
-    toast("Welcome Back, Login successfully")
-    router.push('/')
-  }
-
-  
+  useEffect(() => {
+    if (isLoggedIn) {
+      router.push('/');
+    }
+  }, [isLoggedIn, router]);
 
   return (
     <>
@@ -76,6 +101,8 @@ export default function Login() {
                       type="email"
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
+                      error={!!errors.email}
+                      helperText={errors.email}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -87,10 +114,12 @@ export default function Login() {
                       type="password"
                       value={password}
                       onChange={(event) => setPassword(event.target.value)}
+                      error={!!errors.password}
+                      helperText={errors.password}
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <Button fullWidth variant="contained" color="primary" disabled={password.length < 8 || email.length < 2} type="submit">
+                    <Button fullWidth variant="contained" color="primary" type="submit">
                       Connexion
                     </Button>
                   </Grid>
@@ -101,11 +130,20 @@ export default function Login() {
                   </Grid>
                 </Grid>
               </form>
-             
+              <Grid container justifyContent="center" alignItems="center" sx={{ mt: 2 }}>
+                <Grid item xs={12}>
+                  <Typography variant="body2">
+                    your email is: {email}
+                  </Typography>
+                  <Typography variant="body2">
+                    your password is: {password}
+                  </Typography>
+                </Grid>
+              </Grid>
             </Paper>
           </Grid>
         </Grid>
       </main>
     </>
-  )
+  );
 }

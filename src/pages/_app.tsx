@@ -9,6 +9,8 @@ import '@/styles/fontawesome-all.min.css'
 import '@/styles/themify-icons.css'
 import '@/styles/slick.css'
 import '@/styles/style.css'
+import '@/styles/login.css'
+import '@/styles/inscription.css'
 import '@/styles/nice-select.css'
 import '@/script/contact.js'
 import '@/script/vendor/jquery-1.12.4.min.js'
@@ -37,6 +39,8 @@ import '@/script/jquery.ajaxchimp.min.js'
 import '@/script/plugins.js'
 import '@/script/main.js'
 import '@/script/contact'
+
+
 
 import type { AppProps } from 'next/app'
 import Navbar from '@/components/Navbar';
