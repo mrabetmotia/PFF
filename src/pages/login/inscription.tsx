@@ -33,11 +33,9 @@ const InscriptionForm = () => {
       });
       console.log(response.data); // Afficher la réponse du serveur si nécessaire
       setIsRegistered(true);
-      toast.success('Inscription réussie ! Bienvenue !');
-      router.push('/login/login');
-
     } catch (error) {
       console.error(error);
+
     }
   };
 

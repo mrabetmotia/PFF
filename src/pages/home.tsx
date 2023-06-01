@@ -1,8 +1,5 @@
 import React from 'react';
 import Feature from '@/components/feature';
-import Motivation from '@/components/Motivation';
-import About from '@/components/About';
-import Contact from '@/components/Contact';
 function Header() {
  
   return (
@@ -19,10 +16,6 @@ function Header() {
         </div>
     </div>
     <Feature/>
-    <Motivation/>
-    <About/>
-    <Contact/>
-    
 </main>
   );
  

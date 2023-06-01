@@ -1,0 +1,174 @@
+import React from 'react';
+import { useRouter } from 'next/router';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import HomeIcon from '@mui/icons-material/Home';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import LockIcon from '@mui/icons-material/Lock';
+import PeopleIcon from '@mui/icons-material/People';
+import StoreIcon from '@mui/icons-material/Store';
+import { useMediaQuery } from '@mui/material';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { useAuth } from '@/context/AuthContext';
+import {useEffect , useState} from 'react';
+
+function Navbar() {
+  // state user = {}
+  const [nav, setNav] = useState(false);
+
+  useEffect(() => {
+    const changeBackground = () => {
+      if (typeof window !== 'undefined' && window.scrollY >= 50) {
+        setNav(true);
+      } else {
+        setNav(false);
+      }
+    };
+
+    window.addEventListener('scroll', changeBackground);
+    return () => {
+      window.removeEventListener('scroll', changeBackground);
+    };
+  }, []);
+
+  const router = useRouter();
+  const { isLoggedIn, logout } = useAuth();
+
+  const handleShopClick = () => {
+    router.push('/shops');
+  };
+  const handleLoginClick = () => {
+    router.push('/login');
+  };
+  const handleIndexClick = () => {
+    router.push('/');
+  };
+
+  const handleCoachClick = () => {
+    router.push('/coachs');
+  };
+  const handleCourseClick = () => {
+    router.push('/course');
+  };  
+  const handleContactClick = () => {
+    router.push('/contact');
+  };
+  const handleAddShoptClick = () => {
+    router.push('/shop/addshop');
+  };
+  const handleLogoutClick = () => {
+    logout();
+    router.push('/');
+  };
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleMenuClick = (event: any) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const isSmallScreen = useMediaQuery((theme: any) => theme.breakpoints.down('md'));
+
+  return (
+    
+    <AppBar position="static" sx={{ backgroundColor: '#f73030' }}>
+      <Toolbar>
+        {isSmallScreen ? (
+          <>
+            <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuClick}>
+              <MenuIcon />
+            </IconButton>
+            <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+              <MenuItem onClick={() => {
+                handleMenuClose();
+                handleIndexClick();
+              }}>
+                <HomeIcon /> Home
+              </MenuItem>
+                  <MenuItem onClick={() => {
+                    handleMenuClose();
+                    handleCoachClick();
+                  }}>
+                    <StoreIcon /> Coach
+                  </MenuItem>
+                  <MenuItem onClick={() => {
+                    handleMenuClose();
+                    handleLogoutClick();
+                  }}>
+                    <LockIcon /> Logout
+                  </MenuItem>
+                  <MenuItem onClick={() => {
+                    handleMenuClose();
+                    handleShopClick();
+                  }}>
+                    <ShoppingBasketIcon /> Shop
+                  </MenuItem>
+              {isLoggedIn ? (
+                <>
+
+                  <MenuItem onClick={() => {
+                    handleMenuClose();
+                    handleCourseClick();
+                  }}>
+                    <PeopleIcon /> Cours
+                  </MenuItem>
+                </>
+              ) : (
+                <MenuItem onClick={() => {
+                  handleMenuClose();
+                  handleLoginClick();
+                }}>
+                  <LockIcon /> Login
+                </MenuItem>
+              )}
+            </Menu>
+          </>
+        ) : (
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            My Website
+          </Typography>
+        )}
+        {!isSmallScreen && (
+          <>
+            <Button color="inherit" startIcon={<HomeIcon />} onClick={handleIndexClick}>
+              Home
+            </Button>
+
+
+                <Button color="inherit" startIcon={<StoreIcon />} onClick={handleCoachClick}>
+                  Coach
+                </Button>
+
+                <Button color="inherit" startIcon={<ShoppingBasketIcon />} onClick={handleShopClick}>
+                  Shop
+                </Button>
+                {isLoggedIn ? (
+              <>
+
+                <Button color="inherit" startIcon={<PeopleIcon />} onClick={handleCourseClick}>
+                  Cours
+                </Button>
+                <Button color="inherit" startIcon={<LockIcon />} onClick={handleLogoutClick}>
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <Button color="inherit" startIcon={<LockIcon />} onClick={handleLoginClick}>
+                Login
+              </Button>
+            )}
+          </>
+        )}
+      </Toolbar>
+    </AppBar>
+  );
+}
+export default Navbar;

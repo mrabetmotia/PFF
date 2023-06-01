@@ -1,17 +1,28 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 interface AuthContextType {
   isLoggedIn: boolean;
-  authToken: string | null;
+  token: string | null;
   login: (email: string, password: string) => void;
+  register: (
+    first_name: string,
+    last_name: string,
+    email: string, // Update the type to string
+    phone: Number,
+    address: string,
+    password: string,
+  ) => void;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType>({
   isLoggedIn: false,
-  authToken: null,
+  token: null,
   login: () => {},
+  register: () => {},
   logout: () => {},
 });
 
@@ -19,13 +30,14 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider: React.FC = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [authToken, setAuthToken] = useState<string | null>(null);
+  const [token, settoken] = useState<string | null>(null);
+  const router = useRouter();
 
-  //check after page refresh to get the token inside the useAuthContext
+  // Check authentication state after page refresh to get the token inside the useAuthContext
   const checkAuthState = () => {
-    const storedToken = localStorage.getItem('authToken');
+    const storedToken = localStorage.getItem('token');
     if (storedToken) {
-      setAuthToken(storedToken);
+      settoken(storedToken);
       setIsLoggedIn(true);
     }
   };
@@ -37,27 +49,57 @@ export const AuthProvider: React.FC = ({ children }) => {
   const login = async (email: string, password: string) => {
     try {
       const response = await axios.post(
-        'http://localhost:9000/inscription',
+        'http://localhost:9000/login-user',
         { email, password }
       );
-      const { auth_token } = response.data;
-      setAuthToken(auth_token);
+      const { token } = response.data;
+      settoken(token);
       setIsLoggedIn(true);
-      localStorage.setItem('authToken', auth_token);
+      localStorage.setItem('token', token);
+      toast('Welcome Back, Login successfully');
+      router.push('/');
+
     } catch (error) {
+      toast('Login failed');
+
       console.error('Login failed:', error);
+        router.push('/login');
+
       // Handle login failure, show error message, etc.
     }
   };
 
+  const register = async (nom: string, prenom: string, dateN: string, email: string, password: string, confirmPassword: string, id_post: string) => {
+    try {
+      const response = await axios.post('http://localhost:9000/inscription', {
+        nom,
+        prenom,
+        dateN,
+        email,
+        password,
+        confirmPassword,
+        id_post
+      });
+      console.log('Registration successful:', response.data);
+      toast.success('Inscription réussie ! Bienvenue !');
+      router.push('/login/');
+
+    } catch (error) {
+      console.error('Registration failed:', error);
+      router.push('/login/inscription');
+
+      // Handle registration failure, show error message, etc.
+    }
+  };
+
   const logout = () => {
-    setAuthToken(null);
+    settoken(null);
     setIsLoggedIn(false);
-    localStorage.removeItem('authToken');
+    localStorage.removeItem('token');
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, authToken, login, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, token, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );
