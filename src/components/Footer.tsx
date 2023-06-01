@@ -6,7 +6,7 @@ import { HiOutlineMail } from 'react-icons/hi';
 
 function Footer() {
   return (
-    <Box bg="#f73030" py="20px" px="30px">
+    <Box bg="#31313166" py="20px" px="30px">
       <Flex justify="center" mb="20px">
         <Link href="https://www.instagram.com" mr="20px" color="white">
           <FaInstagram size={20} />

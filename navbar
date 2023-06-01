@@ -1,174 +1,106 @@
-import React from 'react';
-import { useRouter } from 'next/router';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import HomeIcon from '@mui/icons-material/Home';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import LockIcon from '@mui/icons-material/Lock';
-import PeopleIcon from '@mui/icons-material/People';
-import StoreIcon from '@mui/icons-material/Store';
-import { useMediaQuery } from '@mui/material';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import { useAuth } from '@/context/AuthContext';
-import {useEffect , useState} from 'react';
-
-function Navbar() {
-  // state user = {}
-  const [nav, setNav] = useState(false);
-
-  useEffect(() => {
-    const changeBackground = () => {
-      if (typeof window !== 'undefined' && window.scrollY >= 50) {
-        setNav(true);
-      } else {
-        setNav(false);
-      }
-    };
-
-    window.addEventListener('scroll', changeBackground);
-    return () => {
-      window.removeEventListener('scroll', changeBackground);
-    };
-  }, []);
-
-  const router = useRouter();
-  const { isLoggedIn, logout } = useAuth();
-
-  const handleShopClick = () => {
-    router.push('/shops');
-  };
-  const handleLoginClick = () => {
-    router.push('/login');
-  };
-  const handleIndexClick = () => {
-    router.push('/');
-  };
-
-  const handleCoachClick = () => {
-    router.push('/coachs');
-  };
-  const handleCourseClick = () => {
-    router.push('/course');
-  };  
-  const handleContactClick = () => {
-    router.push('/contact');
-  };
-  const handleAddShoptClick = () => {
-    router.push('/shop/addshop');
-  };
-  const handleLogoutClick = () => {
-    logout();
-    router.push('/');
-  };
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleMenuClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
-
-  const isSmallScreen = useMediaQuery((theme: any) => theme.breakpoints.down('md'));
-
-  return (
-    
-    <AppBar position="static" sx={{ backgroundColor: '#f73030' }}>
-      <Toolbar>
-        {isSmallScreen ? (
-          <>
-            <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuClick}>
-              <MenuIcon />
-            </IconButton>
-            <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-              <MenuItem onClick={() => {
-                handleMenuClose();
-                handleIndexClick();
-              }}>
-                <HomeIcon /> Home
-              </MenuItem>
-                  <MenuItem onClick={() => {
-                    handleMenuClose();
-                    handleCoachClick();
-                  }}>
-                    <StoreIcon /> Coach
-                  </MenuItem>
-                  <MenuItem onClick={() => {
-                    handleMenuClose();
-                    handleLogoutClick();
-                  }}>
-                    <LockIcon /> Logout
-                  </MenuItem>
-                  <MenuItem onClick={() => {
-                    handleMenuClose();
-                    handleShopClick();
-                  }}>
-                    <ShoppingBasketIcon /> Shop
-                  </MenuItem>
-              {isLoggedIn ? (
-                <>
-
-                  <MenuItem onClick={() => {
-                    handleMenuClose();
-                    handleCourseClick();
-                  }}>
-                    <PeopleIcon /> Cours
-                  </MenuItem>
-                </>
-              ) : (
-                <MenuItem onClick={() => {
-                  handleMenuClose();
-                  handleLoginClick();
-                }}>
-                  <LockIcon /> Login
-                </MenuItem>
-              )}
-            </Menu>
-          </>
-        ) : (
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            My Website
-          </Typography>
-        )}
-        {!isSmallScreen && (
-          <>
-            <Button color="inherit" startIcon={<HomeIcon />} onClick={handleIndexClick}>
-              Home
-            </Button>
-
-
-                <Button color="inherit" startIcon={<StoreIcon />} onClick={handleCoachClick}>
-                  Coach
-                </Button>
-
-                <Button color="inherit" startIcon={<ShoppingBasketIcon />} onClick={handleShopClick}>
-                  Shop
-                </Button>
-                {isLoggedIn ? (
-              <>
-
-                <Button color="inherit" startIcon={<PeopleIcon />} onClick={handleCourseClick}>
-                  Cours
-                </Button>
-                <Button color="inherit" startIcon={<LockIcon />} onClick={handleLogoutClick}>
-                  Logout
-                </Button>
-              </>
-            ) : (
-              <Button color="inherit" startIcon={<LockIcon />} onClick={handleLoginClick}>
-                Login
-              </Button>
-            )}
-          </>
-        )}
-      </Toolbar>
-    </AppBar>
-  );
-}
-export default Navbar;
+<div className="MuiBox-root css-1p959bk">
+   <div className="react-horizontal-scrolling-menu--wrapper ">
+      <p className="MuiTypography-root MuiTypography-body1 right-arrow css-9l3uo3"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAC6SURBVHgB7dPNDYJAEAXgtxsK2QMDHC3BjsQKxAoswRbsAErwbEzcDrQAYBxXD3iR064hmS8hGX6S9xJ2AKXUEnCerxGJnfuAi2IHa1ouyxoR2NlwcCPjA+PYIaVXOBfEct2ZaIWUNDxluJmGfw6cPLVbDMMZMfW9N977UED2vJZVOyAp3pvLtcnCnGUnjMNGJvd+xx2iM/7rlqvKyb+/hTNAdMQ/aAkt8bNESYnXdFqC8padc1BKqQiegiJ4Qs4BrPgAAAAASUVORK5CYII=" alt="left-arrow"/></p>
+      <div className="react-horizontal-scrolling-menu--scroll-container ">
+         <div className="react-horizontal-scrolling-menu--item " data-key="all" data-index="0">
+            <div className="MuiBox-root css-a4f9ok" title="all">
+               <div type="button" className="bodyPart-card css-npgl2q">
+                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
+                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">all</p>
+               </div>
+            </div>
+         </div>
+         <div className="react-horizontal-scrolling-menu--separator " data-key="all-separator" data-index="0.1"></div>
+         <div className="react-horizontal-scrolling-menu--item " data-key="back" data-index="1">
+            <div className="MuiBox-root css-a4f9ok" title="back">
+               <div type="button" className="bodyPart-card css-rkc9zz">
+                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
+                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">back</p>
+               </div>
+            </div>
+         </div>
+         <div className="react-horizontal-scrolling-menu--separator " data-key="back-separator" data-index="1.1"></div>
+         <div className="react-horizontal-scrolling-menu--item " data-key="cardio" data-index="2">
+            <div className="MuiBox-root css-a4f9ok" title="cardio">
+               <div type="button" className="bodyPart-card css-rkc9zz">
+                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
+                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">cardio</p>
+               </div>
+            </div>
+         </div>
+         <div className="react-horizontal-scrolling-menu--separator " data-key="cardio-separator" data-index="2.1"></div>
+         <div className="react-horizontal-scrolling-menu--item " data-key="chest" data-index="3">
+            <div className="MuiBox-root css-a4f9ok" title="chest">
+               <div type="button" className="bodyPart-card css-rkc9zz">
+                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
+                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">chest</p>
+               </div>
+            </div>
+         </div>
+         <div className="react-horizontal-scrolling-menu--separator " data-key="chest-separator" data-index="3.1"></div>
+         <div className="react-horizontal-scrolling-menu--item " data-key="lower arms" data-index="4">
+            <div className="MuiBox-root css-a4f9ok" title="lower arms">
+               <div type="button" className="bodyPart-card css-rkc9zz">
+                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
+                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">lower arms</p>
+               </div>
+            </div>
+         </div>
+         <div className="react-horizontal-scrolling-menu--separator " data-key="lower arms-separator" data-index="4.1"></div>
+         <div className="react-horizontal-scrolling-menu--item " data-key="lower legs" data-index="5">
+            <div className="MuiBox-root css-a4f9ok" title="lower legs">
+               <div type="button" className="bodyPart-card css-rkc9zz">
+                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
+                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">lower legs</p>
+               </div>
+            </div>
+         </div>
+         <div className="react-horizontal-scrolling-menu--separator " data-key="lower legs-separator" data-index="5.1"></div>
+         <div className="react-horizontal-scrolling-menu--item " data-key="neck" data-index="6">
+            <div className="MuiBox-root css-a4f9ok" title="neck">
+               <div type="button" className="bodyPart-card css-rkc9zz">
+                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
+                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">neck</p>
+               </div>
+            </div>
+         </div>
+         <div className="react-horizontal-scrolling-menu--separator " data-key="neck-separator" data-index="6.1"></div>
+         <div className="react-horizontal-scrolling-menu--item " data-key="shoulders" data-index="7">
+            <div className="MuiBox-root css-a4f9ok" title="shoulders">
+               <div type="button" className="bodyPart-card css-rkc9zz">
+                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
+                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">shoulders</p>
+               </div>
+            </div>
+         </div>
+         <div className="react-horizontal-scrolling-menu--separator " data-key="shoulders-separator" data-index="7.1"></div>
+         <div className="react-horizontal-scrolling-menu--item " data-key="upper arms" data-index="8">
+            <div className="MuiBox-root css-a4f9ok" title="upper arms">
+               <div type="button" className="bodyPart-card css-rkc9zz">
+                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;" />
+                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">upper arms</p>
+               </div>
+            </div>
+         </div>
+         <div className="react-horizontal-scrolling-menu--separator " data-key="upper arms-separator" data-index="8.1"></div>
+         <div className="react-horizontal-scrolling-menu--item " data-key="upper legs" data-index="9">
+            <div className="MuiBox-root css-a4f9ok" title="upper legs">
+               <div type="button" className="bodyPart-card css-rkc9zz">
+                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
+                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">upper legs</p>
+               </div>
+            </div>
+         </div>
+         <div className="react-horizontal-scrolling-menu--separator " data-key="upper legs-separator" data-index="9.1"></div>
+         <div className="react-horizontal-scrolling-menu--item " data-key="waist" data-index="10">
+            <div className="MuiBox-root css-a4f9ok" title="waist">
+               <div type="button" className="bodyPart-card css-rkc9zz">
+                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
+                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">waist</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <p className="MuiTypography-root MuiTypography-body1 left-arrow css-9l3uo3"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACvSURBVHgB7ZLBCQIxEEX/iAVsCTkkskftQDuzA7EDO1ntwOPCXtKBe1Z0nETQaw6brLrzYBICgfcgARRF+Ue4rg07t0y5O8PABDke9waEJiVi8ABqWy/bSaZKjcgCL9xBhmUuGvHVERQvWLtGboh2YgvyHowNdd35EyB1KEuP621F3vt5PDIfkRsiI6t5HXgf5ChFePf4/vEf2C1KovIJyo2pRpO/I0Q8mlxRlJ/jCRjDdrUo31+wAAAAAElFTkSuQmCC" alt="right-arrow"/></p>
+   </div>
+</div>

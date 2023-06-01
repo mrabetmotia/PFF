@@ -45,7 +45,9 @@ export const AuthProvider: React.FC = ({ children }) => {
   useEffect(() => {
     checkAuthState();
   }, []);
-
+  const handleRefresh = () => {
+    window.location.reload();
+  };
   const login = async (email: string, password: string) => {
     try {
       const response = await axios.post(
@@ -56,8 +58,9 @@ export const AuthProvider: React.FC = ({ children }) => {
       settoken(token);
       setIsLoggedIn(true);
       localStorage.setItem('token', token);
-      toast('Welcome Back, Login successfully');
+      handleRefresh();
       router.push('/');
+      toast('Welcome Back, Login successfully');
 
     } catch (error) {
       toast('Login failed');

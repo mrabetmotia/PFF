@@ -36,6 +36,18 @@ input{
     position: relative;
     z-index: 0;
 }
+
+#ContactMain{
+    width:100%;
+    height:768px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('/images/contact.png');
+    position: relative;
+    z-index: 0;
+
+}
 #main::before{
     position: absolute;
     content: "";
@@ -139,6 +151,8 @@ nav .menu-btn,
     color: white;
     padding-top: 18%;
     text-align: center;
+    
+
 }
 .header-heading h2{
     font-size: 2.5rem;
@@ -159,7 +173,7 @@ color: red;
 .header-btns{
     display: flex;
     margin-top: 40px;
-    margin-left: 40%;
+    justify-content: center;
 }
 .header-btn{
 	width:160px;
@@ -266,11 +280,11 @@ color: red;
 #presentaion{
     padding-top: 30px;
     width:100%;
-    height:768px;
+    height:500px;
     position: relative;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(/images/offer.png);
+    background-image: url('./images/motivation.jfif');
     text-align: center;
 }
 
@@ -323,11 +337,15 @@ color: red;
     color: #ffffff;
     border: 2px solid #FF1414;
 }
-
+.aboutTitre{
+    text-align: center;
+    margin-top: 6%;
+    font-size: 3rem;
+}
 #about{
-    margin-top:100px ;
+    margin-top:0 ;
 	width:100%;
-	height: 120vh;
+	height: 83vh;
 	box-sizing: border-box;
 	display: flex;
 	align-items: center;
@@ -350,7 +368,7 @@ color: red;
 }
 .about-text p{
     width: 80%;
-	font-size: 1.2rem;
+	font-size: 2rem;
 	color:#cecece;
 	
 }
@@ -395,20 +413,18 @@ color: red;
     justify-content: center;
     align-items: center;
     margin-bottom: 40px;
-    background-color: #ea6a6a34;
     padding: 2%;
 }
 #contact form input,
 #contact form textarea{
     width:100%;
     height:50px;
-    margin:5px 0px;
+    margin:15px 0px;
     padding: 10px;
     border: none;
     outline: none;
-    background-color: #ffffff2d;
     color: #ffffff;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 #contact form textarea{
     height: 150px;
@@ -422,17 +438,17 @@ color: red;
 }
 .box_container{
     flex-wrap: wrap;
-    gap: 1.5rem
 }
 
 .box{
-    flex: 1 1 30rem;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 0.5rem 1rem rgb(0, 0, 0,0.1);
-    border: 0.1rem solid rgb(0, 0, 0 ,0.3);
-    cursor: pointer;
-    border-radius: 0.5rem;
+    flex: 1 1 30%;
+
+}
+.css-1633um2-MuiPaper-root{
+    background-color: black;
+}
+.aboout-image img{
+    border-radius: 150px;
 }
 @media(max-width:620px){
     #contact form{
