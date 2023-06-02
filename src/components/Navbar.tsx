@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import HomeIcon from '@mui/icons-material/Home';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import LockIcon from '@mui/icons-material/Lock';
 import PeopleIcon from '@mui/icons-material/People';
@@ -61,8 +60,8 @@ function Navbar() {
 
   return (
     <>
-      <nav className={nav ? 'nav active' : 'nav'}>
-        <Link to="#" className="logo" startIcon={<HomeIcon />} onClick={handleIndexClick}>
+      <nav className="active">
+        <Link to="#" className="logo"  onClick={handleIndexClick}>
           <img src="/images/logoNav.png" alt="" />
         </Link>
         <input type="checkbox" id="menu-btn" className="menu-btn" />

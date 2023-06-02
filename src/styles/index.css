@@ -75,7 +75,7 @@ nav{
 }
 nav.active{
 	box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.157);
-	background-color: #000000;
+	background-color: #00000052;
 }
 nav ul{
 	display: flex;
@@ -87,7 +87,7 @@ nav ul{
 	transition: all ease 0.2s;
 }
 .active:hover{
-    background-color: #000000;
+    background-color: #000000 ;
     color:#ffffff;
 	box-shadow: 5px 10px 30px rgba(198, 64, 64, 0.411);
 	transition: all ease 0.2s;
@@ -658,3 +658,5 @@ color: red;
                 height:400px;
             }
         }
+
+        

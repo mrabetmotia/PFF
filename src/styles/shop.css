@@ -1,0 +1,140 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: white; 
+  }
+  
+
+  
+  .shop-page {
+    margin: 4% 20%;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .shop-title {
+    text-align: center;
+    color: #fffdfd;
+    font-size: 4em;
+    font-weight: 300;
+    margin: 0;
+    margin-bottom: 5%;
+    
+  }
+  
+  .filter-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .filter-btn {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #FF1414;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .filter-btn:hover, .filter-btn.active {
+    background-color: #333;
+  }
+  
+  .products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+    margin-top: 12%;
+  }
+  
+  .product-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .product-item img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .pagination-container ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .pagination-container li {
+    margin: 0 0.5rem;
+  }
+  
+  .pagination-container a,
+  .pagination-container .Pagination-shop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination-container .Pagination-shop {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .pagination-container a:hover:not(.Pagination-shop) {
+    background-color: #ddd;
+  }
+  .product-item {
+    position: relative;
+  }
+  .product-item p{
+  margin-bottom: 24%;
+  }
+  .product-item button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #FF1414;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: absolute;
+  bottom: 10px; 
+  right: 30px;
+    }
+  
+  .product-item button:hover {
+    background-color: transparent;
+    transition: all ease 0.5s;
+    color: #ffffff;
+    border: 2px solid #FF1414;
+  }
+  
+  .product-item button::before {
+    content: '\f07a';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 0.5rem;
+  }
+  
+  
