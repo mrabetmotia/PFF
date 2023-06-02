@@ -4,8 +4,8 @@ import ReactPaginate from 'react-paginate';
 const CoachListPage = () => {
   const [coaches, setCoaches] = useState([]);
   const [filteredCoaches, setFilteredCoaches] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const coachesPerPage = 10;
+  const [currentPage, setCurrentPage] = useState(0);
+  const coachesPerPage = 9;
   const [filterYears, setFilterYears] = useState('');
   const [filterSpecialty, setFilterSpecialty] = useState('');
   const [experienceYears, setExperienceYears] = useState([]);
@@ -31,7 +31,7 @@ const CoachListPage = () => {
       return matchExperience && matchSpecialty;
     });
     setFilteredCoaches(filtered);
-    setCurrentPage(1);
+    setCurrentPage(0);
   }, [filterYears, filterSpecialty, coaches]);
 
   const handleFilterYearsChange = (event) => {
@@ -41,30 +41,22 @@ const CoachListPage = () => {
   const handleFilterSpecialtyChange = (event) => {
     setFilterSpecialty(event.target.value);
   };
-  const selectedCategory = (selectedCategory) => {
-    setSelectedCategory(selectedCategory);
-    setCurrentPage(0);
-  };
-
-  const filteredProducts = selectedCategory
-    ? shopList.filter((product) => product.type === selectedCategory)
-    : shopList;
-  const indexOfLastCoach = currentPage * coachesPerPage;
-  const indexOfFirstCoach = indexOfLastCoach - coachesPerPage;
-  const currentCoaches = filteredCoaches.slice(indexOfFirstCoach, indexOfLastCoach);
-  const pageCount = Math.ceil(filteredProducts.length / coachesPerPage);
-  const offset = currentPage * coachesPerPage;
-  const currentProducts = filteredProducts.slice(offset, offset + coachesPerPage);
 
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected);
   };
+
+  const indexOfLastCoach = (currentPage + 1) * coachesPerPage;
+  const indexOfFirstCoach = indexOfLastCoach - coachesPerPage;
+  const currentCoaches = filteredCoaches.slice(indexOfFirstCoach, indexOfLastCoach);
+  const pageCount = Math.ceil(filteredCoaches.length / coachesPerPage);
+
   return (
     <>
       <div id='main'>
         <div className="header-heading">
           <h2>Shows Coach You</h2>
-          <h1><span>NEED</span> </h1>
+          <h1><span>NEED</span></h1>
         </div>
       </div>
       <div>
@@ -106,6 +98,7 @@ const CoachListPage = () => {
             </div>
           ))}
         </div>
+
         <ReactPaginate
           previousLabel="<"
           nextLabel=">"

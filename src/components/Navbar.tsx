@@ -44,8 +44,8 @@ function Navbar() {
     router.push('/contact');
   };
 
-  const handleAddShopClick = () => {
-    router.push('/shop/addshop');
+  const handlePanierClick = () => {
+    router.push('/panier');
   };
 
   const handleLogoutClick = () => {
@@ -89,6 +89,9 @@ function Navbar() {
               </li>
               <li>
                 <Link onClick={handleLogoutClick}>Logout</Link>
+              </li>
+              <li>
+                <Link onClick={handlePanierClick}>panier</Link>
               </li>
             </>
           ) : (

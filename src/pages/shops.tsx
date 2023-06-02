@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
+import Panier from './panier';
 
 const ShopPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [shopList, setShopList] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [currentPage, setCurrentPage] = useState(0);
+  const [items, setItems] = useState([]);
   const itemsPerPage = 6;
+  const showPerPage = 3;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,6 +29,10 @@ const ShopPage = () => {
   const handleCategoryChange = (selectedCategory) => {
     setSelectedCategory(selectedCategory);
     setCurrentPage(0);
+  };
+
+  const addToCart = (product) => {
+    setItems([...items, product]);
   };
 
   const filteredProducts = selectedCategory
@@ -68,14 +75,14 @@ const ShopPage = () => {
             Protein
           </button>
           <button
-            className={`filter-btn ${selectedCategory === 'Accesoire' ? 'active' : ''}`}
-            onClick={() => handleCategoryChange('Accesoire')}
+            className={`filter-btn ${selectedCategory === 'accessoire' ? 'active' : ''}`}
+            onClick={() => handleCategoryChange('accessoire')}
           >
             Accessories
           </button>
           <button
-            className={`filter-btn ${selectedCategory === 'Equipment' ? 'active' : ''}`}
-            onClick={() => handleCategoryChange('Equipment')}
+            className={`filter-btn ${selectedCategory === 'equipment' ? 'active' : ''}`}
+            onClick={() => handleCategoryChange('equipment')}
           >
             Equipment
           </button>
@@ -91,9 +98,10 @@ const ShopPage = () => {
             <div key={product.id} className="product-item">
               <img src={product.image} alt="" />
               <h3>{product.name}</h3>
-              {product.type === 'protein' && <p style={{ margin: "0" }}>{product.klg} KG</p>}
               <p>{product.price} TND</p>
-              <button className="add-to-cart-button">ADD Panier</button>
+              <button onClick={() => addToCart(product)} className="add-to-cart-button">
+                ADD Panier
+              </button>
             </div>
           ))}
         </div>
@@ -110,6 +118,7 @@ const ShopPage = () => {
           activeClassName="Pagination-shop"
         />
       </div>
+      {items.length > 0 && <Panier items={items} />}
     </>
   );
 };
