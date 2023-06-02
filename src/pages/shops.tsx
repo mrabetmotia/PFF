@@ -3,7 +3,7 @@ import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import Panier from './panier';
 
-const ShopPage = () => {
+const shops = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [shopList, setShopList] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
@@ -123,4 +123,4 @@ const ShopPage = () => {
   );
 };
 
-export default ShopPage;
+export default shops;
