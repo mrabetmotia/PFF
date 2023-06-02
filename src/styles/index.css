@@ -79,6 +79,8 @@ nav.active{
 }
 nav ul{
 	display: flex;
+    cursor: pointer;
+
 }
 .active{
     background-color: #FF1414;
