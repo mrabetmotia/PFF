@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
-import Panier from './panier';
 
 const shops = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -98,6 +97,7 @@ const shops = () => {
             <div key={product.id} className="product-item">
               <img src={product.image} alt="" />
               <h3>{product.name}</h3>
+              {product.type === 'protein' && <p style={{ margin: '0' }}>{product.klg} KG</p>}
               <p>{product.price} TND</p>
               <button onClick={() => addToCart(product)} className="add-to-cart-button">
                 ADD Panier
@@ -118,7 +118,6 @@ const shops = () => {
           activeClassName="Pagination-shop"
         />
       </div>
-      {items.length > 0 && <Panier items={items} />}
     </>
   );
 };
