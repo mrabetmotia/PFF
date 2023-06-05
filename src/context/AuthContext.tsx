@@ -59,8 +59,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       setIsLoggedIn(true);
       localStorage.setItem('token', token);
       handleRefresh();
-      router.push('/');
-      toast('Welcome Back, Login successfully');
+      toast.success('Welcome Back, Login successfully');
 
     } catch (error) {
       toast('Login failed');
@@ -72,12 +71,11 @@ export const AuthProvider: React.FC = ({ children }) => {
     }
   };
 
-  const register = async (nom: string, prenom: string, dateN: string, email: string, password: string, confirmPassword: string, id_post: string) => {
+  const register = async (nom: string, prenom: string,  email: string, password: string, confirmPassword: string, id_post: string) => {
     try {
       const response = await axios.post('http://localhost:9000/inscription', {
         nom,
         prenom,
-        dateN,
         email,
         password,
         confirmPassword,
@@ -85,10 +83,11 @@ export const AuthProvider: React.FC = ({ children }) => {
       });
       console.log('Registration successful:', response.data);
       toast.success('Inscription réussie ! Bienvenue !');
-      router.push('/login/');
+      router.push('/login');
 
     } catch (error) {
       console.error('Registration failed:', error);
+      toast.error('Registration failed !');
       router.push('/login/inscription');
 
       // Handle registration failure, show error message, etc.

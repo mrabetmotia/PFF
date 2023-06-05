@@ -121,7 +121,7 @@ export default function Login() {
                 </Grid>
               </form>
               <Grid container justifyContent="center" alignItems="center" sx={{ mt: 2 }}>
-                  <a href="" className="inscr" onClick={handleInscriptionClick}> Incription</a>
+                  <a href="http://localhost:3000/login/inscription" className="inscr" > Incription</a>
               </Grid>
             </Paper>
           </Grid>

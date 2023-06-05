@@ -79,11 +79,11 @@ function Navbar() {
           <li>
             <Link onClick={handleCoachClick}>Coach</Link>
           </li>
+          <li>
+              <Link onClick={handleCourseClick}>Exercise</Link>
+            </li>
           {isLoggedIn ? (
             <>
-              <li>
-                <Link onClick={handleCourseClick}>Exercise</Link>
-              </li>
               <li>
                 <Link onClick={handleContactClick}>Contact</Link>
               </li>

@@ -74,8 +74,8 @@ const shops = () => {
             Protein
           </button>
           <button
-            className={`filter-btn ${selectedCategory === 'accessoire' ? 'active' : ''}`}
-            onClick={() => handleCategoryChange('accessoire')}
+            className={`filter-btn ${selectedCategory === 'Accesoire' ? 'active' : ''}`}
+            onClick={() => handleCategoryChange('Accesoire')}
           >
             Accessories
           </button>

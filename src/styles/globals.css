@@ -4,6 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
+    justify-content: center;
 }
 
 .boxx{
@@ -135,9 +136,10 @@
     border-radius: 2rem;
     position: relative;
     margin-top: 2%;
-    padding: 1%;
     margin-left: 35%;
     margin-right: 35%;
+    margin-top: 6%;
+
 }
   
 
@@ -327,7 +329,80 @@
   }
   
 
+.btn_course{
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  background: #cccccc00;
+  cursor: pointer;
+  border-radius: 5px;
+}
 
 
+.btn_course:hover, .btn_course.active {
+  background-color: #333;
+  color: white;
+}
 
 
+@media (max-width: 500px) {
+  .exercise-card {
+
+  }
+  .titreExcercice {
+    font-size: 2rem; 
+    text-align: center;
+    color: white;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+}
+}
+
+@media (max-width: 500px) {
+  .exercise-card{
+    margin-right: 0;
+    width: 300px;
+  }
+}
+@media (max-width: 351px) {
+  .exercise-card{
+    margin-right: 0;
+    padding-right: 1%;
+    width: 175px;
+    height: 400px;
+  }
+  .css-1ywlhp1{
+    margin: 0;
+  }
+  .navigationPage{
+    margin-left: 15%;
+    margin-right: 9%;
+  }
+}
+@media (max-width: 835px) {
+
+  .navigationPage{
+    margin-left: 29%;
+    margin-right: 27%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 571px){
+  .navigationPage {
+      margin-left: 17%;
+      margin-right: 16%;
+  }
+}
+@media (max-width: 374px){
+  .navigationPage {
+    margin-left: 29px;
+    margin-right: 23px;
+  }
+}
+
+@media (max-width: 306px){
+  .navigationPage {
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+}

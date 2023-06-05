@@ -65,7 +65,7 @@ const CoachListPage = () => {
             Filter by years of experience:
           </label>
           <select value={filterYears} onChange={handleFilterYearsChange} className='cherche'>
-            <option value="">Select experience</option>
+            <option value="">All</option>
             {experienceYears.map((year, index) => (
               <option key={index} value={year}>{year} years</option>
             ))}
@@ -76,7 +76,7 @@ const CoachListPage = () => {
             Filter by specialty:
           </label>
           <select value={filterSpecialty} onChange={handleFilterSpecialtyChange} className='cherche'>
-            <option value="">Select specialty</option>
+            <option value="">All</option>
             {specialties.map((specialty, index) => (
               <option key={index} value={specialty}>{specialty}</option>
             ))}
