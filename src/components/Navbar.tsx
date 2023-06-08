@@ -25,7 +25,7 @@ function Navbar() {
   const { isLoggedIn, logout } = useAuth();
 
   const handleShopClick = () => {
-    router.push('/shops');
+    router.push('/shop');
   };
 
   const handleIndexClick = () => {
@@ -33,7 +33,7 @@ function Navbar() {
   };
 
   const handleCoachClick = () => {
-    router.push('/coachs');
+    router.push('/coach');
   };
 
   const handleCourseClick = () => {

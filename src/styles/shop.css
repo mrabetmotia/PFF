@@ -5,7 +5,16 @@ body {
     color: white; 
   }
   
-
+  #main-shop{
+    width:100%;
+    height:768px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('data:image/jpeg;base64,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');
+    position: relative;
+    z-index: 0;
+}
   
   .shop-page {
     padding: 20px;
@@ -46,7 +55,7 @@ body {
   
   .products-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
     grid-gap: 20px;
     margin-top: 12%;
   }
@@ -107,7 +116,7 @@ body {
     border: none;
     padding: 10px;
     text-align: center;
-    box-shadow: 0 14px 28px rgb(134, 1, 1);
+    box-shadow: 0 5px 15px rgb(134, 1, 1);
     transition: box-shadow 0.3s ease;
   }
   
@@ -124,7 +133,7 @@ body {
     transition: background-color 0.3s ease;
     position: absolute;
   bottom: 10px; 
-  right: 30px;
+  right: 46px;
     }
   
   .product-item button:hover {
@@ -141,8 +150,54 @@ body {
     margin-right: 0.5rem;
   }
   
-  
-  
+  /* shop detail */
+  .shop-detail {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    padding: 20px;
+    box-shadow: 0 14px 28px rgb(134, 1, 1);
+    text-align: center;
+  }
+
+  .shop-detail span{
+    color: #FF1414;
+  }
+
+  .shop-detail img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10%;
+  box-shadow: 0 3px 15px rgb(134, 1, 1);
+}
+
+.shop-detail h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .shop-detail h3 {
+    font-size: 18px;
+  }
+
+  .shop-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .shop-detail p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+
+
+
+
+
+
 @media (max-width: 768px) {
   .filter-container {
   flex-wrap: wrap;

@@ -4,7 +4,16 @@
     grid-gap: 20px;
     margin: 10% 2%;
   }
-  
+  #main-coach{
+    width:100%;
+    height:768px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('https://img.freepik.com/premium-photo/silhouette-man-standing-strong-gym-flexing-muscles_600776-26856.jpg?size=626&ext=jpg&uid=R102623652&ga=GA1.2.127947547.1683828639&semt=ais');
+    position: relative;
+    z-index: 0;
+}
   .coach {
     border: none ;
     padding: 20px;
@@ -65,9 +74,49 @@
     font-size: 14px;
     
   }
-  
+  /* coach detail */
+  .coach-detail {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    padding: 20px;
+    box-shadow: 0 14px 28px rgb(134, 1, 1);
+    text-align: center;
+  }
 
+  .coach-detail span{
+    color: #FF1414;
+  }
+
+  .coach-detail img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10%;
+  box-shadow: 0 3px 15px rgb(134, 1, 1);
+}
+
+.coach-detail h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .coach-detail h3 {
+    font-size: 18px;
+  }
+
+  .coach-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .coach-detail p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
   
+ 
  
   @media (max-width: 768px) {
     .coach-list {
