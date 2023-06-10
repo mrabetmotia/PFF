@@ -1,18 +1,8 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import LockIcon from '@mui/icons-material/Lock';
-import PeopleIcon from '@mui/icons-material/People';
-import StoreIcon from '@mui/icons-material/Store';
-import { useMediaQuery } from '@mui/material';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import { useAuth } from '@/context/AuthContext';
 import { Link } from 'react-scroll';
 import Login from '@/pages/login';
@@ -53,15 +43,13 @@ function Navbar() {
     router.push('/');
   };
 
- 
   const toggleModal = () => {
     setModalOpen(!modalOpen);
   };
-
   return (
     <>
       <nav className="active">
-        <Link to="#" className="logo"  onClick={handleIndexClick}>
+        <Link to="#" className="logo" onClick={handleIndexClick}>
           <img src="/images/logoNav.png" alt="" />
         </Link>
         <input type="checkbox" id="menu-btn" className="menu-btn" />
@@ -75,23 +63,31 @@ function Navbar() {
           <li>
             <Link onClick={handleShopClick}>Shop</Link>
           </li>
- 
+
           <li>
             <Link onClick={handleCoachClick}>Coach</Link>
           </li>
           <li>
-              <Link onClick={handleCourseClick}>Exercise</Link>
-            </li>
+            <Link onClick={handleCourseClick}>Exercise</Link>
+          </li>
+          <li>
+            <Link onClick={handleContactClick}>Contact</Link>
+          </li>
           {isLoggedIn ? (
             <>
-              <li>
-                <Link onClick={handleContactClick}>Contact</Link>
-              </li>
+
               <li>
                 <Link onClick={handleLogoutClick}>Logout</Link>
               </li>
               <li>
-                <Link onClick={handlePanierClick}>panier</Link>
+                <IconButton onClick={handleLogoutClick}>
+                  <LockIcon className="icon-logout iconeshop"  />
+                </IconButton >
+              </li>
+              <li>
+                <IconButton onClick={handlePanierClick}>
+                  <ShoppingBasketIcon  className='iconeshop'/>
+                </IconButton>
               </li>
             </>
           ) : (
@@ -106,8 +102,7 @@ function Navbar() {
       {modalOpen && (
         <div className="modal">
           <div className="modal-content">
-
-            <Login/>
+            <Login />
           </div>
         </div>
       )}

@@ -15,7 +15,7 @@ const Panier = () => {
   const router = useRouter();
   const totalPrice = items.reduce((total, item) => total + item.price, 0);
 
-  const removeItem = (id) => {
+  const removeItem = (id:any) => {
     setItems(items.filter((item) => item.id !== id));
   };
   useEffect(() => {

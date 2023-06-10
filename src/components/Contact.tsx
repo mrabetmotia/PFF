@@ -1,7 +1,4 @@
 import * as React from 'react';
-import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
-import { styled } from '@mui/material/styles';
 import { z } from 'zod';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -12,13 +9,6 @@ import { useRouter } from 'next/router';
 function Contact() {
   const router = useRouter();
 
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
   const schema = z.object({
     name: z.string().nonempty(' Name is required'),
     message: z.string().nonempty('Message is required'),
@@ -33,7 +23,7 @@ function Contact() {
   });
 
 
-  const handleSaveClient = async (data) => {
+  const handleSaveClient = async (data:any) => {
     try {
       await axios.post('http://localhost:9000/new_contact', data);
       toast('Message Send');
@@ -44,6 +34,7 @@ function Contact() {
 
     }
   };
+  
   return (
     <div id='contact' className=''>
             <h1>CONTACT US</h1>
@@ -61,7 +52,6 @@ function Contact() {
                 width="600"
                 height="450"
                 style={{ border: 0 }}
-                allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>

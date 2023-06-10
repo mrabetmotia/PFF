@@ -58,6 +58,9 @@ const CoachListPage = () => {
         <div className="header-heading">
           <h2>Shows Coach You</h2>
           <h1><span>NEED</span></h1>
+          <div className="header-btns">
+                <a href="coach/insc" className="header-btn">Creat Compte</a>    
+            </div>
         </div>
       </div>
       <div>

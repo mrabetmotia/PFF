@@ -10,8 +10,8 @@ const CoachDetail = () => {
     const fetchCoachDetails = async () => {
       try {
         const response = await fetch(`http://localhost:9000/Coachs/${id}`);
-        const CoachData = await response.json();
-        setCoach(CoachData);
+        const coachData = await response.json();
+        setCoach(coachData);
       } catch (error) {
         console.error(error);
       }
@@ -28,17 +28,20 @@ const CoachDetail = () => {
 
   return (
     <div className="coach-detail">
-      <h1>Exserice Detail <span>{coach.nom}</span></h1>
-      <video controls>
-        <source src="/video/coach.mp4" type="video/mp4" />
-      </video>
-      <p>{coach.experiance} years experience</p>
-      <p>description : {coach.description} </p>
-      <p>specialty : {coach.spesialite} </p>
-      <p>phone number : {coach.tel} </p>
-      <p>Email : {coach.email} </p>
+      <h1 className="exercise-title">Exercise Detail <span>{coach.nom}</span></h1>
+      <div className="video-container">
+        <video className="coach-video" autoPlay muted controls>
+          <source src='/video/coach.mp4' />
+        </video>
+      </div>
+      <p className="experience">Years of experience: {coach.experiance}</p>
+      <p className="description">Description: {coach.description}</p>
+      <p className="specialty">Specialty: {coach.spesialite}</p>
+      <p className="phone">Phone number: {coach.phone}</p>
+      <p className="email">Email: {coach.email}</p>
     </div>
   );
+  
 };
 
 export default CoachDetail;

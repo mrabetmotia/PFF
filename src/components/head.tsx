@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Footer() {
+function Head() {
     return (
       <>
         <meta http-equiv="x-ua-compatible" content="ie=edge"/>
@@ -14,5 +14,5 @@ function Footer() {
     );
   }
   
-  export default Footer;
+  export default Head;
   
