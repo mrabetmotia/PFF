@@ -9,7 +9,7 @@ const ShopDetail = () => {
   useEffect(() => {
     const fetchShopDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:9000/shops/${id}`);
+        const response = await fetch(`http://localhost:9000/Products/${id}`);
         const shopData = await response.json();
         setShop(shopData);
       } catch (error) {
@@ -32,7 +32,7 @@ const ShopDetail = () => {
       <img src={shop.image} alt={shop.name} className="shop-image" />
       {shop.type === 'protein' && <p style={{ margin: '0' }}>{shop.kg} KG</p>}
       <p>{shop.price} TND</p>
-      <p>Type : {shop.type}</p>
+      <p>Type : {shop.type.name}</p>
 
     </div>
   );

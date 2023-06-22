@@ -1,106 +1,146 @@
-<div className="MuiBox-root css-1p959bk">
-   <div className="react-horizontal-scrolling-menu--wrapper ">
-      <p className="MuiTypography-root MuiTypography-body1 right-arrow css-9l3uo3"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAC6SURBVHgB7dPNDYJAEAXgtxsK2QMDHC3BjsQKxAoswRbsAErwbEzcDrQAYBxXD3iR064hmS8hGX6S9xJ2AKXUEnCerxGJnfuAi2IHa1ouyxoR2NlwcCPjA+PYIaVXOBfEct2ZaIWUNDxluJmGfw6cPLVbDMMZMfW9N977UED2vJZVOyAp3pvLtcnCnGUnjMNGJvd+xx2iM/7rlqvKyb+/hTNAdMQ/aAkt8bNESYnXdFqC8padc1BKqQiegiJ4Qs4BrPgAAAAASUVORK5CYII=" alt="left-arrow"/></p>
-      <div className="react-horizontal-scrolling-menu--scroll-container ">
-         <div className="react-horizontal-scrolling-menu--item " data-key="all" data-index="0">
-            <div className="MuiBox-root css-a4f9ok" title="all">
-               <div type="button" className="bodyPart-card css-npgl2q">
-                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
-                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">all</p>
-               </div>
-            </div>
-         </div>
-         <div className="react-horizontal-scrolling-menu--separator " data-key="all-separator" data-index="0.1"></div>
-         <div className="react-horizontal-scrolling-menu--item " data-key="back" data-index="1">
-            <div className="MuiBox-root css-a4f9ok" title="back">
-               <div type="button" className="bodyPart-card css-rkc9zz">
-                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
-                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">back</p>
-               </div>
-            </div>
-         </div>
-         <div className="react-horizontal-scrolling-menu--separator " data-key="back-separator" data-index="1.1"></div>
-         <div className="react-horizontal-scrolling-menu--item " data-key="cardio" data-index="2">
-            <div className="MuiBox-root css-a4f9ok" title="cardio">
-               <div type="button" className="bodyPart-card css-rkc9zz">
-                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
-                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">cardio</p>
-               </div>
-            </div>
-         </div>
-         <div className="react-horizontal-scrolling-menu--separator " data-key="cardio-separator" data-index="2.1"></div>
-         <div className="react-horizontal-scrolling-menu--item " data-key="chest" data-index="3">
-            <div className="MuiBox-root css-a4f9ok" title="chest">
-               <div type="button" className="bodyPart-card css-rkc9zz">
-                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
-                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">chest</p>
-               </div>
-            </div>
-         </div>
-         <div className="react-horizontal-scrolling-menu--separator " data-key="chest-separator" data-index="3.1"></div>
-         <div className="react-horizontal-scrolling-menu--item " data-key="lower arms" data-index="4">
-            <div className="MuiBox-root css-a4f9ok" title="lower arms">
-               <div type="button" className="bodyPart-card css-rkc9zz">
-                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
-                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">lower arms</p>
-               </div>
-            </div>
-         </div>
-         <div className="react-horizontal-scrolling-menu--separator " data-key="lower arms-separator" data-index="4.1"></div>
-         <div className="react-horizontal-scrolling-menu--item " data-key="lower legs" data-index="5">
-            <div className="MuiBox-root css-a4f9ok" title="lower legs">
-               <div type="button" className="bodyPart-card css-rkc9zz">
-                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
-                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">lower legs</p>
-               </div>
-            </div>
-         </div>
-         <div className="react-horizontal-scrolling-menu--separator " data-key="lower legs-separator" data-index="5.1"></div>
-         <div className="react-horizontal-scrolling-menu--item " data-key="neck" data-index="6">
-            <div className="MuiBox-root css-a4f9ok" title="neck">
-               <div type="button" className="bodyPart-card css-rkc9zz">
-                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
-                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">neck</p>
-               </div>
-            </div>
-         </div>
-         <div className="react-horizontal-scrolling-menu--separator " data-key="neck-separator" data-index="6.1"></div>
-         <div className="react-horizontal-scrolling-menu--item " data-key="shoulders" data-index="7">
-            <div className="MuiBox-root css-a4f9ok" title="shoulders">
-               <div type="button" className="bodyPart-card css-rkc9zz">
-                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
-                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">shoulders</p>
-               </div>
-            </div>
-         </div>
-         <div className="react-horizontal-scrolling-menu--separator " data-key="shoulders-separator" data-index="7.1"></div>
-         <div className="react-horizontal-scrolling-menu--item " data-key="upper arms" data-index="8">
-            <div className="MuiBox-root css-a4f9ok" title="upper arms">
-               <div type="button" className="bodyPart-card css-rkc9zz">
-                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;" />
-                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">upper arms</p>
-               </div>
-            </div>
-         </div>
-         <div className="react-horizontal-scrolling-menu--separator " data-key="upper arms-separator" data-index="8.1"></div>
-         <div className="react-horizontal-scrolling-menu--item " data-key="upper legs" data-index="9">
-            <div className="MuiBox-root css-a4f9ok" title="upper legs">
-               <div type="button" className="bodyPart-card css-rkc9zz">
-                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
-                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">upper legs</p>
-               </div>
-            </div>
-         </div>
-         <div className="react-horizontal-scrolling-menu--separator " data-key="upper legs-separator" data-index="9.1"></div>
-         <div className="react-horizontal-scrolling-menu--item " data-key="waist" data-index="10">
-            <div className="MuiBox-root css-a4f9ok" title="waist">
-               <div type="button" className="bodyPart-card css-rkc9zz">
-                  <img src="/static/media/gym.6e701417c428e2fbc267.png" alt="icon" style="width: 40px; height: 40px; margin: auto;"/>
-                  <p className="MuiTypography-root MuiTypography-body1 css-1gt6l9f">waist</p>
-               </div>
-            </div>
-         </div>
-      </div>
-      <p className="MuiTypography-root MuiTypography-body1 left-arrow css-9l3uo3"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACvSURBVHgB7ZLBCQIxEEX/iAVsCTkkskftQDuzA7EDO1ntwOPCXtKBe1Z0nETQaw6brLrzYBICgfcgARRF+Ue4rg07t0y5O8PABDke9waEJiVi8ABqWy/bSaZKjcgCL9xBhmUuGvHVERQvWLtGboh2YgvyHowNdd35EyB1KEuP621F3vt5PDIfkRsiI6t5HXgf5ChFePf4/vEf2C1KovIJyo2pRpO/I0Q8mlxRlJ/jCRjDdrUo31+wAAAAAElFTkSuQmCC" alt="right-arrow"/></p>
-   </div>
-</div>
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useForm } from 'react-hook-form';
+import SaveIcon from '@mui/icons-material/Save';
+import Button from '@mui/material/Button';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select'
+
+const schema = z.object({
+  name: z.string().nonempty('Name is required'),
+  image: z.string().nonempty('Image is required'),
+  kg: z.string().nonempty('Kg is required'),
+  price: z.string().nonempty('Price is required'),
+  description: z.string().nonempty('Description is required'),
+  _id: z.string().nonempty('Type is required'),
+});
+
+export default function CreateType() {
+  const router = useRouter();
+  const [data, setData] = useState([]);
+  const [type, setType] = React.useState('');
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setType(event.target.value);
+  };
+  
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
+
+  const handleSaveType = async (data:any) => {
+    try {
+      await axios.post('http://localhost:9000/Products',data);
+      toast.success('Product created successfully');
+      router.push('/shop');
+    } catch (error) {
+      console.error(error);
+      toast.error('Product error');
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const result = await axios.get('http://localhost:9000/type');
+      setData(result.data);
+    } catch (error) {
+      console.error('There was an error fetching the data:', error);
+    }
+  };
+
+  return (
+    <>
+      <main>
+        <h1>Add Product</h1>
+        <form onSubmit={handleSubmit(handleSaveType)}>
+          <TextField
+            id="name"
+            name="name"
+            label="Name"
+            variant="outlined"
+            {...register('name')}
+            error={!!errors.name}
+            helperText={errors.name?.message}
+          />
+          <TextField
+            id="image"
+            name="image"
+            label="Image"
+            variant="outlined"
+            {...register('image')}
+            error={!!errors.image}
+            helperText={errors.image?.message}
+          />
+          <TextField
+            id="kg"
+            name="kg"
+            label="Kg"
+            variant="outlined"
+            {...register('kg')}
+            error={!!errors.kg}
+            helperText={errors.kg?.message}
+          />
+          <TextField
+            id="price"
+            name="price"
+            label="Price"
+            variant="outlined"
+            {...register('price')}
+            error={!!errors.price}
+            helperText={errors.price?.message}
+          />
+          <TextField
+            id="description"
+            name="description"
+            label="Description"
+            variant="outlined"
+            {...register('description')}
+            error={!!errors.description}
+            helperText={errors.description?.message}
+          />
+          <TextField
+            id="type"
+            name="type"
+            label="type"
+            variant="outlined"
+            {...register('type')}
+            error={!!errors.type}
+            helperText={errors.type?.message}
+          />
+          {/* <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+            <InputLabel id="demo-simple-select-standard-label">Type</InputLabel>
+            <Select
+              labelId="demo-simple-select-standard-label"
+              id="demo-simple-select-standard"
+              value={type}
+              onChange={handleChange}
+              label="type"
+            >
+              {data.map((item) => (
+                <MenuItem key={item._id} value={item._id}>{item.name}</MenuItem>
+              ))}
+            </Select>
+          </FormControl> */}
+          <Button variant="outlined" startIcon={<SaveIcon />} type="submit">
+            Save
+          </Button>
+        </form>
+      </main>
+    </>
+  );
+}

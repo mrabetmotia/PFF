@@ -37,6 +37,24 @@ input{
     z-index: 0;
 }
 
+.css-sghohy-MuiButtonBase-root-MuiButton-root{
+    width:160px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+    background-color: #FF1414;
+    box-shadow: 5px 10px 30px rgba(255, 2, 2, 0.336);
+    border-radius: 5px;
+	color:#ffffff;
+}
+
+.css-sghohy-MuiButtonBase-root-MuiButton-root:hover{
+	background-color: transparent;
+    transition: all ease 0.5s;
+    color: #ffffff;
+    border: 2px solid #FF1414;
+}
 #ContactMain{
     width:100%;
     height:768px;

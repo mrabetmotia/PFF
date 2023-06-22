@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AuthProvider } from '@/context/AuthContext';
-
+import { CartProvider } from '../context/CartContext';
 const theme = createTheme();
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -22,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <div>
       <Head />
+      <CartProvider>
         <CssBaseline />
         <AuthProvider>
         <Navbar />
@@ -29,6 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Footer />
         </AuthProvider>
         <ToastContainer />
+        </CartProvider>
       </div>
     </ThemeProvider>
   );

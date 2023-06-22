@@ -24,9 +24,6 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({ email: '', password: '' });
 
-  const handleInscriptionClick = () => {
-    router.push('login/inscription');
-  };
 
 
   const resetForm = (event: any) => {

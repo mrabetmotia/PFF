@@ -192,7 +192,7 @@ function Cours() {
         <div className="exercise-card" >
                 <Link href={`/course/${exercise._id}`}>
             
-            <img src={exercise.lien} alt={exercise.nom} />
+            <img src={`/exercice/${exercise.lien}.gif`} alt={exercise.nom} />
             </Link>
             <div className="css-1xhj18k">
             </div>

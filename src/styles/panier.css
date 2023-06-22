@@ -14,14 +14,20 @@
     text-align: center;
 padding-bottom: 5%;
   }
-  
+  .nbPanier{
+    color: rgb(255, 0, 0);
+  }
   .item-list {
     list-style-type: none;
     padding: 0;
     margin-bottom: 20px;
     
   }
-  
+  .panier_detail{
+    color: white;
+    text-align: center;
+    font-size: large;
+  }
   .item {
     display: flex;
     justify-content: space-between;

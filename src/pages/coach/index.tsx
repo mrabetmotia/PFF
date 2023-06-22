@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 import Link from 'next/link';
+import { Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import SaveIcon from '@mui/icons-material/Save';
+import ADD from './insc';
+import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/router';
 
 const CoachListPage = () => {
   const [coaches, setCoaches] = useState([]);
@@ -11,7 +16,18 @@ const CoachListPage = () => {
   const [filterSpecialty, setFilterSpecialty] = useState('');
   const [experienceYears, setExperienceYears] = useState([]);
   const [specialties, setSpecialties] = useState([]);
+  const [selectedItemId, setSelectedItemId] = useState(null);
+  const [addDialogOpen, setAddDialogOpen] = useState(false);
+  const { isLoggedIn } = useAuth();
+  const router = useRouter();
 
+  const handleAddClick = () => {
+    setAddDialogOpen(true);
+  };
+
+  const handleAddCancel = () => {
+    setAddDialogOpen(false);
+  };
   useEffect(() => {
     fetch('http://localhost:9000/coachs')
       .then(response => response.json())
@@ -21,7 +37,7 @@ const CoachListPage = () => {
         setExperienceYears(uniqueExperience);
         setSpecialties(uniqueSpecialties);
         setCoaches(data);
-        setFilteredCoaches(data);
+        setFilteredCoaches(data.filter(coach => coach.verification === 'valide'));
       });
   }, []);
 
@@ -29,7 +45,7 @@ const CoachListPage = () => {
     const filtered = coaches.filter(coach => {
       const matchExperience = filterYears ? coach.experiance >= parseInt(filterYears) : true;
       const matchSpecialty = filterSpecialty ? coach.spesialite === filterSpecialty : true;
-      return matchExperience && matchSpecialty;
+      return matchExperience && matchSpecialty && coach.verification === 'valide';
     });
     setFilteredCoaches(filtered);
     setCurrentPage(0);
@@ -59,8 +75,25 @@ const CoachListPage = () => {
           <h2>Shows Coach You</h2>
           <h1><span>NEED</span></h1>
           <div className="header-btns">
-                <a href="coach/insc" className="header-btn">Creat Compte</a>    
-            </div>
+            <Button
+              variant="contained"
+              color="primary"
+              className="btnadd"
+              onClick={handleAddClick}
+            >
+              Create Poste
+            </Button>
+            <Dialog open={addDialogOpen} onClose={handleAddCancel}>
+              <DialogContent>
+                <ADD />
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleAddCancel} color="primary">
+                  Cancel
+                </Button>
+              </DialogActions>
+            </Dialog>   
+          </div>
         </div>
       </div>
       <div>
@@ -91,9 +124,8 @@ const CoachListPage = () => {
           {currentCoaches.map(coach => (
             <div key={coach.id} className="coach">
               <div>
-              <Link href={`/coach/${coach._id}`}>
-
-                <img src={coach.image} alt="" />
+                <Link href={`/coach/${coach._id}`}>
+                  <img src={coach.image} alt="" />
                 </Link>
                 <div className="box">
                   <h2>{coach.nom}</h2>

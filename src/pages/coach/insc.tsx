@@ -1,28 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import jwt_decode from 'jwt-decode';
 
 const CoachRegistrationForm = () => {
   const router = useRouter();
 
   const [formData, setFormData] = useState({
     nom: '',
-    specialite: '',
+    spesialite: '',
     description: '',
     image: '',
     experiance: '',
     email: '',
-    phone: ''
-  });
+    phone: '',
+    video: ''
+});
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+
+  // Decode token and populate form data
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const decoded: { email?: string; phone?: string; nom?: string;first_name?:string } = jwt_decode(token);
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          email: decoded.email || '',
+          phone: decoded.phone || '',
+          nom: decoded.first_name || ''
+        }));
+      } catch (error) {
+        console.error('Invalid token', error); // Log the error to the console
+      }
+    }
+  }, []);
+  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value
+    }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -35,23 +57,22 @@ const CoachRegistrationForm = () => {
       });
 
       if (response.ok) {
-        toast.success('Inscription réussie ! Please white for validation !');
+        toast.success('Inscription réussie ! Please wait for validation!');
         router.push('/coach');
-
       } else {
         console.error('Coach registration failed');
-        toast.error('registration failed!');
-
+        toast.error('Registration failed!');
       }
     } catch (error) {
       console.error(error);
     }
   };
 
+
   return (
     <form className="coach-registration-form" onSubmit={handleSubmit}>
       <div className="form-group">
-        <label htmlFor="nom">Nom:</label>
+        <label htmlFor="nom" className='label'>Nom:</label>
         <input
           type="text"
           id="nom"
@@ -62,18 +83,19 @@ const CoachRegistrationForm = () => {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="specialite">Spécialité:</label>
+        <label htmlFor="spesialite" className="label">Spécialité:</label>
         <input
           type="text"
-          id="specialite"
-          name="specialite"
-          value={formData.specialite}
+          id="spesialite"
+          name="spesialite"
+          value={formData.spesialite}
           onChange={handleChange}
           required
         />
       </div>
+
       <div className="form-group">
-        <label htmlFor="description">Description:</label>
+        <label htmlFor="description" className='label'>Description:</label>
         <textarea
           id="description"
           name="description"
@@ -82,8 +104,8 @@ const CoachRegistrationForm = () => {
           required
         ></textarea>
       </div>
-      <div className="form-group">
-        <label htmlFor="image">Image:</label>
+      <div className="form-group" >
+        <label htmlFor="image" className='label' >Image:</label>
         <input
           type="text"
           id="image"
@@ -93,8 +115,19 @@ const CoachRegistrationForm = () => {
           required
         />
       </div>
+      <div className="form-group" >
+        <label htmlFor="video" className='label' >video:</label>
+        <input
+          type="text"
+          id="video"
+          name="video"
+          value={formData.video}
+          onChange={handleChange}
+          required
+        />
+      </div>
       <div className="form-group">
-        <label htmlFor="experiance">Expérience:</label>
+        <label htmlFor="experiance" className='label'>Expérience:</label>
         <input
           type="number"
           id="experiance"
@@ -105,7 +138,7 @@ const CoachRegistrationForm = () => {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email" className='label'>Email:</label>
         <input
           type="email"
           id="email"
@@ -116,7 +149,7 @@ const CoachRegistrationForm = () => {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="phone">Phone:</label>
+        <label htmlFor="phone" className='label'>Phone:</label>
         <input
           type="number"
           id="phone"

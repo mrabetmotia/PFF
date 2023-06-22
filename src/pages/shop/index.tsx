@@ -1,22 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect ,useContext } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
-import { Button } from '@mui/material';
 import Link from 'next/link';
+import { CartContext } from '../../context/CartContext';
+
 
 const Shops = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [shopList, setShopList] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [currentPage, setCurrentPage] = useState(0);
-  const [items, setItems] = useState([]);
   const itemsPerPage = 12;
-  const [cartItems, setCartItems] = useState([]);
+  const [types, setTypes] = useState([]);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:9000/shop');
+        const response = await axios.get('http://localhost:9000/Product');
         setShopList(response.data);
       } catch (error) {
         console.error(error);
@@ -27,17 +28,27 @@ const Shops = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchTypes = async () => {
+      try {
+        const response = await axios.get('http://localhost:9000/type');
+        setTypes(response.data);
+      } catch (error) {
+        console.error(error);
+        setErrorMessage('Une erreur est survenue lors de la récupération des types.');
+      }
+    };
+
+    fetchTypes();
+  }, []);
+
   const handleCategoryChange = (selectedCategory) => {
     setSelectedCategory(selectedCategory);
     setCurrentPage(0);
   };
 
-  const addToCart = (product) => {
-    setCartItems([...cartItems, product]);
-  };
-
   const filteredProducts = selectedCategory
-    ? shopList.filter((product) => product.type === selectedCategory)
+    ? shopList.filter((product) => product.type._id === selectedCategory)
     : shopList;
 
   const pageCount = Math.ceil(filteredProducts.length / itemsPerPage);
@@ -69,24 +80,15 @@ const Shops = () => {
       <div className="shop-page">
         <h1 className="shop-title">Shop</h1>
         <div className="filter-container">
-          <button
-            className={`filter-btn ${selectedCategory === 'protein' ? 'active' : ''}`}
-            onClick={() => handleCategoryChange('protein')}
-          >
-            Protein
-          </button>
-          <button
-            className={`filter-btn ${selectedCategory === 'Accesoire' ? 'active' : ''}`}
-            onClick={() => handleCategoryChange('Accesoire')}
-          >
-            Accessories
-          </button>
-          <button
-            className={`filter-btn ${selectedCategory === 'Equipment' ? 'active' : ''}`}
-            onClick={() => handleCategoryChange('Equipment')}
-          >
-            Equipment
-          </button>
+          {types.map((type) => (
+            <button
+              key={type._id}
+              className={`filter-btn ${selectedCategory === type._id ? 'active' : ''}`}
+              onClick={() => handleCategoryChange(type._id)}
+            >
+              {type.name}
+            </button>
+          ))}
           <button
             className={`filter-btn ${selectedCategory === '' ? 'active' : ''}`}
             onClick={() => handleCategoryChange('')}
@@ -98,18 +100,15 @@ const Shops = () => {
             {currentProducts.map((product) => (
               <div key={product._id} className="product-item">
                 <Link href={`/shop/${product._id}`}>
-                <img src={product.image} alt="" />
+                  <img src={product.image} alt="" />
                 </Link>
-
                 <h3>{product.name}</h3>
-                {product.type === 'protein' && <p style={{ margin: '0' }}>{product.kg} KG</p>}
+                {product.type.name === 'protein' && <p style={{ margin: '0' }}>{product.kg} KG</p>}
                 <p>{product.price} TND</p>
-                <button onClick={() => addToCart(product)} className="add-to-cart-button">
-                ADD Panier
-              </button>
+                <button className="add-to-cart-button" onClick={() => addToCart(product)}>ADD Panier</button>
               </div>
             ))}
-        </div>
+          </div>
 
         <ReactPaginate
           previousLabel="<"
