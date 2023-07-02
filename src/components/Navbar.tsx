@@ -1,17 +1,17 @@
-import React, { useState, useEffect ,useContext } from 'react';
-import { useRouter } from 'next/router';
-import IconButton from '@mui/material/IconButton';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import { useAuth } from '@/context/AuthContext';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import jwt_decode from 'jwt-decode';
-import { Link } from 'react-scroll';
-import Login from '@/pages/login';
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
-import { CartContext } from '../context/CartContext'; 
+import React, { useState, useEffect, useContext } from "react";
+import { useRouter } from "next/router";
+import IconButton from "@mui/material/IconButton";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import { useAuth } from "@/context/AuthContext";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+import jwt_decode from "jwt-decode";
+import { Link } from "react-scroll";
+import Login from "@/pages/login";
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import { CartContext } from "../context/CartContext";
 
 function Navbar() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -23,32 +23,32 @@ function Navbar() {
   const { cart } = useContext(CartContext);
 
   const handleShopClick = () => {
-    router.push('/shop');
+    router.push("/shop");
   };
 
   const handleIndexClick = () => {
-    router.push('/');
+    router.push("/");
   };
 
   const handleCoachClick = () => {
-    router.push('/coach');
+    router.push("/coach");
   };
 
   const handleCourseClick = () => {
-    router.push('/course');
+    router.push("/course");
   };
 
   const handleContactClick = () => {
-    router.push('/contact');
+    router.push("/contact");
   };
 
   const handlePanierClick = () => {
-    router.push('/panier');
+    router.push("/panier");
   };
 
   const handleLogoutClick = () => {
     logout();
-    router.push('/');
+    router.push("/");
   };
 
   const toggleModal = () => {
@@ -62,30 +62,29 @@ function Navbar() {
     setAnchorEl(event.currentTarget);
   };
 
-
-
   const [formData, setFormData] = useState({
-    nom: '',
-    specialite: '',
-    description: '',
-    image: '',
-    experiance: '',
-    email: '',
-    phone: ''
+    nom: "",
+    specialite: "",
+    description: "",
+    image: "",
+    experiance: "",
+    email: "",
+    phone: "",
   });
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
       try {
-        const decoded: { email?: string;  first_name?:string } = jwt_decode(token);
+        const decoded: { email?: string; first_name?: string } =
+          jwt_decode(token);
         setFormData((prevFormData) => ({
           ...prevFormData,
-          email: decoded.email || '',
-          nom: decoded.first_name || ''
+          email: decoded.email || "",
+          nom: decoded.first_name || "",
         }));
       } catch (error) {
-        console.error('Invalid token', error); 
+        console.error("Invalid token", error);
       }
     }
   }, []);
@@ -126,47 +125,41 @@ function Navbar() {
           </li>
           {isLoggedIn ? (
             <>
-            
-            <div>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>          
-                {formData.nom}
-                </MenuItem>
-                <MenuItem onClick={handleClose}>          
-                {formData.email}
-                </MenuItem>
-                <MenuItem onClick={handleLogoutClick}>Logaut</MenuItem>
-              </Menu>
+              <div>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleMenu}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleClose}>{formData.nom}</MenuItem>
+                  <MenuItem onClick={handleClose}>{formData.email}</MenuItem>
+                  <MenuItem onClick={handleLogoutClick}>Logaut</MenuItem>
+                </Menu>
               </div>
               <IconButton onClick={handlePanierClick}>
-                <ShoppingBasketIcon   className='iconeshop'/>
+                <ShoppingBasketIcon className="iconeshop" />
               </IconButton>
-              <p className='nbPanier'>{cart.length}</p>
-
+              <p className="nbPanier">{cart.length}</p>
             </>
           ) : (
             <li>
@@ -178,9 +171,7 @@ function Navbar() {
         </ul>
       </nav>
       <Dialog open={open} onClose={handleClose}>
-        <DialogContent>
-          <Login />
-        </DialogContent>
+        <Login />
       </Dialog>
     </>
   );

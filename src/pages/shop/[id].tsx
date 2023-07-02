@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const ShopDetail = () => {
   const router = useRouter();
@@ -28,12 +28,13 @@ const ShopDetail = () => {
 
   return (
     <div className="shop-detail">
-      <h1>Shop Detail <span>{shop.name}</span></h1>
+      <h1>
+        Shop Detail <span>{shop.name}</span>
+      </h1>
       <img src={shop.image} alt={shop.name} className="shop-image" />
-      {shop.type === 'protein' && <p style={{ margin: '0' }}>{shop.kg} KG</p>}
+      {shop.type === "protein" && <p style={{ margin: "0" }}>{shop.kg} KG</p>}
       <p>{shop.price} TND</p>
       <p>Type : {shop.type.name}</p>
-
     </div>
   );
 };

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const CoachDetail = () => {
   const router = useRouter();
@@ -28,10 +28,12 @@ const CoachDetail = () => {
 
   return (
     <div className="coach-detail">
-      <h1 className="exercise-title">Exercise Detail <span>{coach.nom}</span></h1>
+      <h1 className="exercise-title">
+        Exercise Detail <span>{coach.nom}</span>
+      </h1>
       <div className="video-container">
         <video className="coach-video" autoPlay muted controls>
-          <source src='/video/coach.mp4' />
+          <source src="/video/coach.mp4" />
         </video>
       </div>
       <p className="experience">Years of experience: {coach.experiance}</p>
@@ -41,7 +43,6 @@ const CoachDetail = () => {
       <p className="email">Email: {coach.email}</p>
     </div>
   );
-  
 };
 
 export default CoachDetail;

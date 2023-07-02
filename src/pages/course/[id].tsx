@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const CourseDetail = () => {
   const router = useRouter();
@@ -28,11 +28,12 @@ const CourseDetail = () => {
 
   return (
     <div className="shop-detail">
-      <h1>Exserice Detail <span>{exercice.nom}</span></h1>
-      <img src={exercice.lien}  className="Excerice-image" />
+      <h1>
+        Exserice Detail <span>{exercice.nom}</span>
+      </h1>
+      <img src={exercice.lien} className="Excerice-image" />
       <p>Type : {exercice.type}</p>
       <p>{exercice.description}</p>
-      
     </div>
   );
 };

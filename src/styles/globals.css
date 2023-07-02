@@ -23,6 +23,20 @@
 .label{
   color: black;
 }
+.css-11l5t4l-MuiGrid-root {
+  -webkit-flex-basis: 33.333333%;
+  -ms-flex-preferred-size: 33.333333%;
+  flex-basis: 100%;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  max-width: 100%;
+}
+
+.css-1643708-MuiGrid-root {
+  height: 52vh;
+}
 
 .css-qxgp2z{
     margin-top: 5%;

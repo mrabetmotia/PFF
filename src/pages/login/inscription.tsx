@@ -1,28 +1,31 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useRouter } from 'next/router';
-import { useAuth } from '@/context/AuthContext';
-import { z } from 'zod';
+import React, { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
+import { useAuth } from "@/context/AuthContext";
+import { z } from "zod";
 
 const InscriptionSchema = z.object({
-  first_name: z.string().nonempty('Le prénom est requis'),
-  last_name: z.string().nonempty('Le nom est requis'),
-  email: z.string().email('Adresse e-mail invalide').nonempty('L\'adresse e-mail est requise'),
-  phone: z.number().refine(value => value > 0, {
-    message: 'Le téléphone est requis et doit être supérieur à zéro',
+  first_name: z.string().nonempty("Le prénom est requis"),
+  last_name: z.string().nonempty("Le nom est requis"),
+  email: z
+    .string()
+    .email("Adresse e-mail invalide")
+    .nonempty("L'adresse e-mail est requise"),
+  phone: z.number().refine((value) => value > 0, {
+    message: "Le téléphone est requis et doit être supérieur à zéro",
   }),
-  address: z.string().nonempty('L\'adresse est requise'),
-  password: z.string().nonempty('Le mot de passe est requis'),
+  address: z.string().nonempty("L'adresse est requise"),
+  password: z.string().nonempty("Le mot de passe est requis"),
 });
 
 const InscriptionForm = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState(0);
-  const [address, setAddress] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [address, setAddress] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const { register } = useAuth();
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -36,10 +39,17 @@ const InscriptionForm = () => {
         address,
         password,
       });
-  
-      await register(firstName, lastName, email, Number(phone), address, password);
+
+      await register(
+        firstName,
+        lastName,
+        email,
+        Number(phone),
+        address,
+        password
+      );
     } catch (error) {
-      setErrorMessage('Veuillez remplir tous les champs correctement.');
+      setErrorMessage("Veuillez remplir tous les champs correctement.");
     }
   };
 
