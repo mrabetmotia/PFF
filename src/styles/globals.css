@@ -20,6 +20,10 @@
     border-radius: 0.5rem;
 }
 
+.imgCoach{
+  border-radius: 50%;
+}
+
 .label{
   color: black;
 }

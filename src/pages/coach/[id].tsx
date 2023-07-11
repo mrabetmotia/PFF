@@ -33,7 +33,7 @@ const CoachDetail = () => {
       </h1>
       <div className="video-container">
         <video className="coach-video" autoPlay muted controls>
-          <source src="/video/coach.mp4" />
+          <source src={coach.video} />
         </video>
       </div>
       <p className="experience">Years of experience: {coach.experiance}</p>

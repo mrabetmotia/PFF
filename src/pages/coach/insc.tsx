@@ -76,7 +76,7 @@ export default function AddCoach() {
 
       const response = await axios.post("http://localhost:9000/coach", data);
       if (response.status === 200) {
-        toast.success("Coach created successfully");
+        toast.success("Coach created successfully , with for validation");
         router.push("/coach");
       } else {
         toast.error("Server response error");
@@ -151,6 +151,7 @@ export default function AddCoach() {
             sx={{
               mt: 1,
             }}
+            type="number"
             id="experiance"
             name="experiance"
             label="experiance"
@@ -177,6 +178,7 @@ export default function AddCoach() {
             sx={{
               mt: 1,
             }}
+            type="number"
             id="phone"
             name="phone"
             label="phone"
@@ -215,7 +217,7 @@ export default function AddCoach() {
             <FilledInput type="file" onChange={handleCvFileChange} />
           </Box>
 
-          <Button variant="outlined" startIcon={<SendIcon />} type="submit">
+          <Button className="btnsave" variant="outlined" startIcon={<SendIcon />} type="submit">
             Save
           </Button>
         </form>

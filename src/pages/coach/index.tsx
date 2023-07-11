@@ -156,7 +156,7 @@ const CoachListPage = () => {
             <div key={coach.id} className="coach">
               <div>
                 <Link href={`/coach/${coach._id}`}>
-                  <img src={coach.image} alt="" />
+                  <img className="imgCoach" src={coach.image} alt="" />
                 </Link>
                 <div className="box">
                   <h2>{coach.nom}</h2>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useAuth } from "@/context/AuthContext";
 import { z } from "zod";
+import { toast } from "react-toastify";
 
 const InscriptionSchema = z.object({
   first_name: z.string().nonempty("Le prénom est requis"),
@@ -22,7 +23,7 @@ const InscriptionForm = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState(0);
+  const [phone, setPhone] = useState();
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -49,7 +50,7 @@ const InscriptionForm = () => {
         password
       );
     } catch (error) {
-      setErrorMessage("Veuillez remplir tous les champs correctement.");
+      toast.error("Veuillez remplir tous les champs correctement.");
     }
   };
 

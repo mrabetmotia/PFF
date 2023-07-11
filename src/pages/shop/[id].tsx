@@ -32,9 +32,9 @@ const ShopDetail = () => {
         Shop Detail <span>{shop.name}</span>
       </h1>
       <img src={shop.image} alt={shop.name} className="shop-image" />
-      {shop.type === "protein" && <p style={{ margin: "0" }}>{shop.kg} KG</p>}
+      {shop.type.name === "protein" && <p style={{ margin: "0" }}>{shop.kg} KG</p>}
       <p>{shop.price} TND</p>
-      <p>Type : {shop.type.name}</p>
+      <p>  {shop.description}</p>
     </div>
   );
 };

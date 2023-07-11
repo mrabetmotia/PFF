@@ -10,7 +10,7 @@ interface AuthContextType {
   register: (
     first_name: string,
     last_name: string,
-    email: string, // Update the type to string
+    email: string, 
     phone: Number,
     address: string,
     password: string
@@ -65,11 +65,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       router.push("/");
     } catch (error) {
       toast("Login failed");
-
       console.error("Login failed:", error);
-      router.push("/login");
-
-      // Handle login failure, show error message, etc.
     }
   };
 
@@ -92,13 +88,11 @@ export const AuthProvider: React.FC = ({ children }) => {
       });
       console.log("Registration successful:", response.data);
       toast.success("Inscription réussie ! Bienvenue !");
-      router.push("/login");
+      router.push("/");
     } catch (error) {
       console.error("Registration failed:", error);
-      toast.error("Registration failed !");
-      router.push("/login/inscription");
+      toast.error("Email already exists!");
 
-      // Handle registration failure, show error message, etc.
     }
   };
 

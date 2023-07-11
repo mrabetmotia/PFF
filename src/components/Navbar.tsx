@@ -10,15 +10,12 @@ import jwt_decode from "jwt-decode";
 import { Link } from "react-scroll";
 import Login from "@/pages/login";
 import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
 import { CartContext } from "../context/CartContext";
 
 function Navbar() {
-  const [modalOpen, setModalOpen] = useState(false);
   const [open, setOpen] = React.useState(false);
   const router = useRouter();
   const { isLoggedIn, logout } = useAuth();
-  const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const { cart } = useContext(CartContext);
 
@@ -49,13 +46,6 @@ function Navbar() {
   const handleLogoutClick = () => {
     logout();
     router.push("/");
-  };
-
-  const toggleModal = () => {
-    setModalOpen(!modalOpen);
-  };
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAuth(event.target.checked);
   };
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -94,8 +84,10 @@ function Navbar() {
   };
 
   const handleClose = () => {
+    setAnchorEl(null);
     setOpen(false);
   };
+  
   return (
     <>
       <nav className="active">

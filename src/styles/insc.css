@@ -16,6 +16,10 @@
 
   }
   
+  .btnsave{
+    margin-top: 2%;
+  }
+
   input[type="text"],
   input[type="email"],
   input[type="password"],
