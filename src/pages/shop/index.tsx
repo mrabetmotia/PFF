@@ -3,6 +3,9 @@ import axios from "axios";
 import ReactPaginate from "react-paginate";
 import Link from "next/link";
 import { CartContext } from "../../context/CartContext";
+import { toast } from 'react-toastify';
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/router";
 
 const Shops = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -12,6 +15,8 @@ const Shops = () => {
   const itemsPerPage = 12;
   const [types, setTypes] = useState([]);
   const { addToCart } = useContext(CartContext);
+  const { isLoggedIn, user } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,9 +50,17 @@ const Shops = () => {
     fetchTypes();
   }, []);
 
-  const handleCategoryChange = (selectedCategory) => {
+  const handleCategoryChange = (selectedCategory:any) => {
     setSelectedCategory(selectedCategory);
     setCurrentPage(0);
+  };
+
+  const handleAddToCart = (product:any) => {
+    if (!isLoggedIn) {
+      toast.error("Login Please !");
+      return;
+    }
+    addToCart(product);
   };
 
   const filteredProducts = selectedCategory
@@ -115,7 +128,7 @@ const Shops = () => {
               <p>{product.price} TND</p>
               <button
                 className="add-to-cart-button"
-                onClick={() => addToCart(product)}
+                onClick={() => handleAddToCart(product)}
               >
                 ADD Panier
               </button>

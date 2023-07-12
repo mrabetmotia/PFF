@@ -199,11 +199,12 @@ body {
     margin-bottom: 5px;
   }
 
-
-
-
-
-
+  .products-container-index {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
 
 @media (max-width: 768px) {
   .filter-container {
@@ -214,3 +215,4 @@ body {
   margin: 5px;
   }
   }
+  

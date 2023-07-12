@@ -24,6 +24,19 @@
   border-radius: 50%;
 }
 
+.Maps{
+  margin-bottom: 5%;
+}
+
+.BTN-More{
+  background-color: #f70000;
+  margin: 1% ;
+}
+.BTN-More:hover{
+  background-color: #494848;
+  transform: scale(1.1);
+}
+
 .label{
   color: black;
 }

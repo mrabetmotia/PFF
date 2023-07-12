@@ -1,5 +1,8 @@
 import React from 'react';
 import Contact from '@/components/Contact';
+import Coach from '@/components/Coach';
+import Shop from '@/components/Shop';
+import Exercice from '@/components/Exercice';
 import Featurebox from '@/components/featurebox';
 
 function Header() {
@@ -24,6 +27,12 @@ function Header() {
             <Featurebox image='/images/4.svg' title="weightLifting"/>
         </div>
     </div>
+    <h1 className="aboutTitre">Liste of Coach</h1>
+    <Coach/>
+    <h1 className="aboutTitre">Shop</h1>
+    <Shop/>
+    <h1 className="aboutTitre">Exercice</h1>
+    <Exercice/>
     <div id='presentaion'>
         <div className="pr-heading">
             <h1>A BIG <span>MOTIVATION</span> FOR THIS SUMMER</h1>

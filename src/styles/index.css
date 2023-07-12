@@ -306,6 +306,7 @@ color: red;
     background-size: cover;
     background-image: url('./images/motivation.jfif');
     text-align: center;
+    margin-top: 10%;
 }
 
 .pr-heading{
