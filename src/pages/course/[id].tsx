@@ -31,7 +31,7 @@ const CourseDetail = () => {
       <h1>
         Exserice Detail <span>{exercice.nom}</span>
       </h1>
-      <img src={exercice.lien} className="Excerice-image" />
+      <img src={`/exercice/${exercice.lien}`} className="Excerice-image" />
       <p>Type : {exercice.type}</p>
       <p>{exercice.description}</p>
     </div>

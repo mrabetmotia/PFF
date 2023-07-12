@@ -1,0 +1,198 @@
+#mainExcercice {
+    width: 100%;
+    height: 768px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(/_next/static/media/offer.bed248f4.png);
+    position: relative;
+    z-index: 0;
+}
+
+#mainExcercice::before{
+    position: absolute;
+    content: "";
+    background: -moz-radial-gradient(center, ellipse cover, rgba(181, 8, 8, 0.38) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(181, 8, 8, 0.38) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: radial-gradient(ellipse at center, rgba(181, 8, 8, 0.38) 0%, rgba(0, 0, 0, 0.6) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#61b50808', endColorstr='#99000000',GradientType=1 );
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.titreExcercice{
+    font-size: 4rem;
+    text-align: center;
+    color: white;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+}
+
+.react-horizontal-scrolling-menu--wrapper {
+    display: flex;
+}
+
+.css-1p959bk {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+}
+.react-horizontal-scrolling-menu--wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.css-9l3uo3 {
+    margin: 0px;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+}
+
+.react-horizontal-scrolling-menu--scroll-container {
+    display: flex;
+    height: max-content;
+    overflow-y: hidden;
+    
+    position: relative;
+    width: 100%;
+    
+}
+
+.css-a4f9ok {
+    margin: 0px 40px;
+}
+.react-horizontal-scrolling-menu--scroll-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: red;
+
+  /* Ajoutez d'autres styles de mise en page selon vos besoins */
+}
+
+
+.react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  .react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar-thumb {
+    background-color: rgb(162, 5, 5);
+    border-radius: 4px;
+  }
+  
+  .react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(96, 2, 2);
+  }
+  
+  /* Ajoutez d'autres styles de mise en page pour les éléments de défilement selon vos besoins */
+  
+  .css-npgl2q {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      border-top: 4px solid rgb(255, 38, 37);
+      background-color: rgb(255, 255, 255);
+      border-bottom-left-radius: 20px;
+      width: 270px;
+      height: 280px;
+      cursor: pointer;
+  }
+  
+  .css-rkc9zz img{
+      width: 112px;
+      height: 118px;
+      margin: auto;
+      padding-top: 11%;
+  }
+  .react-horizontal-scrolling-menu--item{
+      display: flex;
+      justify-Content: center;
+      margin: 2% 3%;
+      gap: 25px;
+  }
+  
+  .css-1gt6l9f{
+      display: flex;
+      justify-Content: center;
+      margin: 0 5%;
+      gap: 25px;
+      color: white ;
+  }
+
+  .btn_course {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    background: #cccccc00;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.active:hover {
+    background-color: #000000;
+    color: #ffffff;
+    box-shadow: 5px 10px 30px rgba(198, 64, 64, 0.411);
+    transition: all ease 0.2s;
+}
+
+.btn_course:hover, .btn_course.active {
+    background-color: #333;
+    color: white;
+}
+  
+.css-qxgp2z {
+    margin-top: 5%;
+    margin-left: 5%;
+}
+.boxx_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.exercise-card {
+    margin-top: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    width: 400px;
+    height: 445px;
+    background: #fff;
+    border-top: 4px solid #FF2625;
+    border-bottom-left-radius: 20px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-bottom: 10px;
+    transform: scale(1, 1);
+    transition: 0.3s all ease-in-out;
+}
+
+.css-1xhj18k {
+    text-align: center;
+}
+
+.css-zx0dr4 {
+    margin: 11px 0px 0px 21px;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+    padding-bottom: 10px;
+    text-transform: capitalize;
+    font-size: 22px;
+    text-align: center;
+}

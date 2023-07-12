@@ -3,7 +3,6 @@ import Contact from '@/components/Contact';
 import Coach from '@/components/Coach';
 import Shop from '@/components/Shop';
 import Exercice from '@/components/Exercice';
-import Featurebox from '@/components/featurebox';
 
 function Header() {
  
@@ -16,15 +15,6 @@ function Header() {
             <h1><span>FITNESS</span> WITH US </h1>
             <div className="header-btns">
             </div>            
-        </div>
-    </div>
-    <div id='features'>
-        <h1>FEATURE</h1>
-        <div className="a-container">
-            <Featurebox image='/images/1.svg' title="weightLifting"/>
-            <Featurebox image='/images/1.svg' title="weightLifting"/>
-            <Featurebox image='/images/3.svg' title="weightLifting"/>
-            <Featurebox image='/images/4.svg' title="weightLifting"/>
         </div>
     </div>
     <h1 className="aboutTitre">Liste of Coach</h1>
