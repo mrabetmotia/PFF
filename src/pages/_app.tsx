@@ -1,4 +1,5 @@
 import '@/styles/globals.css'
+import '@/styles/index.css'
 import '@/styles/insc.css'
 import '@/styles/coach.css'
 import '@/styles/panier.css'
