@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import Link from "next/link";
-import {
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-} from "@mui/material";
-import SaveIcon from "@mui/icons-material/Save";
+import { Button, Dialog, DialogContent, DialogActions } from "@mui/material";
 import ADD from "./insc";
 import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/router";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CoachListPage = () => {
   const [coaches, setCoaches] = useState([]);
@@ -22,15 +16,18 @@ const CoachListPage = () => {
   const [filterSpecialty, setFilterSpecialty] = useState("");
   const [experienceYears, setExperienceYears] = useState([]);
   const [specialties, setSpecialties] = useState([]);
-  const [selectedItemId, setSelectedItemId] = useState(null);
   const [addDialogOpen, setAddDialogOpen] = useState(false);
   const { isLoggedIn } = useAuth();
-  const router = useRouter();
 
-  const handleAddClick = () => {
+  const handleAddToCart = () => {
+    if (!isLoggedIn) {
+      toast.error("Login Please !");
+      return;
+    }else{
     setAddDialogOpen(true);
+    }
   };
-
+  
   const handleAddCancel = () => {
     setAddDialogOpen(false);
   };
@@ -38,20 +35,20 @@ const CoachListPage = () => {
     fetch("http://localhost:9000/coachs")
       .then((response) => response.json())
       .then((data) => {
+        const validCoaches = data.filter((coach:any) => coach.verification === "valide");
         const uniqueExperience = [
-          ...new Set(data.map((coach) => coach.experiance)),
+          ...new Set(validCoaches.map((coach) => coach.experiance)),
         ];
         const uniqueSpecialties = [
-          ...new Set(data.map((coach) => coach.spesialite)),
+          ...new Set(validCoaches.map((coach) => coach.spesialite)),
         ];
         setExperienceYears(uniqueExperience);
         setSpecialties(uniqueSpecialties);
         setCoaches(data);
-        setFilteredCoaches(
-          data.filter((coach) => coach.verification === "valide")
-        );
+        setFilteredCoaches(validCoaches);
       });
   }, []);
+  
 
   useEffect(() => {
     const filtered = coaches.filter((coach) => {
@@ -89,6 +86,8 @@ const CoachListPage = () => {
   );
   const pageCount = Math.ceil(filteredCoaches.length / coachesPerPage);
 
+
+
   return (
     <>
       <div id="main-coach">
@@ -98,11 +97,14 @@ const CoachListPage = () => {
             <span>NEED</span>
           </h1>
           <div className="header-btns">
+            
             <Button
               variant="contained"
               color="primary"
               className="btnadd"
-              onClick={handleAddClick}
+              /* onClick={handleAddClick} */
+              onClick={() => handleAddToCart()}
+
             >
               Create Poste
             </Button>

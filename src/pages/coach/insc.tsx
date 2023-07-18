@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,6 +12,7 @@ import FilledInput from "@mui/material/FilledInput";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+import jwt_decode from 'jwt-decode';
 
 const schema = z.object({
   nom: z.string().nonempty("Nom is required"),
@@ -27,6 +28,16 @@ export default function AddCoach() {
   const [imageFile, setImageFile] = useState(null);
   const [cvFile, setCvFile] = useState(null);
   const [videoFile, setVideoFile] = useState(null);
+  const [formData, setFormData] = useState({
+    nom: '',
+    spesialite: '',
+    description: '',
+    image: '',
+    experiance: '',
+    email: '',
+    phone: '',
+    video: ''
+  });
 
   const {
     register,
@@ -36,9 +47,9 @@ export default function AddCoach() {
     resolver: zodResolver(schema),
   });
 
-  const handleImageFileChange = (e) => setImageFile(e.target.files[0]);
-  const handleCvFileChange = (e) => setCvFile(e.target.files[0]);
-  const handleVideoFileChange = (e) => setVideoFile(e.target.files[0]);
+  const handleImageFileChange = (e:any) => setImageFile(e.target.files[0]);
+  const handleCvFileChange = (e:any) => setCvFile(e.target.files[0]);
+  const handleVideoFileChange = (e:any) => setVideoFile(e.target.files[0]);
 
   const uploadFile = async (file, folder) => {
     try {
@@ -57,7 +68,24 @@ export default function AddCoach() {
     }
   };
 
-  const handleSaveCoach = async (data) => {
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const decoded: { email?: string; phone?: string; nom?: string;first_name?:string } = jwt_decode(token);
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          email: decoded.email || '',
+          phone: decoded.phone || '',
+          nom: decoded.first_name || ''
+        }));
+      } catch (error) {
+        console.error('Invalid token', error); // Log the error to the console
+      }
+    }
+  }, []);
+
+  const handleSaveCoach = async (data:any) => {
     try {
       if (imageFile) {
         const imageUrl = await uploadFile(imageFile, "image");
@@ -115,10 +143,40 @@ export default function AddCoach() {
             id="nom"
             name="nom"
             label="Nom"
+            value={formData.nom}
             variant="outlined"
             {...register("nom")}
             error={!!errors.nom}
             helperText={errors.nom?.message}
+            fullWidth
+          />
+                    <TextField
+            sx={{
+              mt: 1,
+            }}
+            id="email"
+            name="email"
+            label="email"
+            value={formData.email}
+            variant="outlined"
+            {...register("email")}
+            error={!!errors.email}
+            helperText={errors.email?.message}
+            fullWidth
+          />
+          <TextField
+            sx={{
+              mt: 1,
+            }}
+            type="number"
+            id="phone"
+            value={formData.phone}
+            name="phone"
+            label="phone"
+            variant="outlined"
+            {...register("phone")}
+            error={!!errors.phone}
+            helperText={errors.phone?.message}
             fullWidth
           />
           <TextField
@@ -159,33 +217,6 @@ export default function AddCoach() {
             {...register("experiance")}
             error={!!errors.experiance}
             helperText={errors.experiance?.message}
-            fullWidth
-          />
-          <TextField
-            sx={{
-              mt: 1,
-            }}
-            id="email"
-            name="email"
-            label="email"
-            variant="outlined"
-            {...register("email")}
-            error={!!errors.email}
-            helperText={errors.email?.message}
-            fullWidth
-          />
-          <TextField
-            sx={{
-              mt: 1,
-            }}
-            type="number"
-            id="phone"
-            name="phone"
-            label="phone"
-            variant="outlined"
-            {...register("phone")}
-            error={!!errors.phone}
-            helperText={errors.phone?.message}
             fullWidth
           />
 

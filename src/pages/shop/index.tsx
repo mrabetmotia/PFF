@@ -87,11 +87,6 @@ const Shops = () => {
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta,
             repellat!
           </p>
-          <div className="header-btns">
-            <a href="" className="header-btn">
-              LOGIN NOW
-            </a>
-          </div>
         </div>
       </div>
       <div className="shop-page">
